@@ -11,8 +11,8 @@
   DTS:LocaleID="13322"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="137"
-  DTS:VersionGUID="{FDE62FAC-B212-41C5-8826-33AC2030A73C}">
+  DTS:VersionBuild="141"
+  DTS:VersionGUID="{4C7123BE-AA9B-4800-A490-1E2A984993C1}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -195,7 +195,7 @@
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{CC432029-C4E9-443D-8C26-7FCDBDC23E6C}"
-              SQLTask:SqlStatementSource="create table dimTransportistas(&#xA;&#x9;idTransportista int not null, -- nuestra llave primaria&#xA;&#x9;Transportista nvarchar(50),&#xA;&#x9;Telefono nvarchar(24) not null&#xA;&#x9;CONSTRAINT PK_dimTransportistas_idTransportista PRIMARY KEY CLUSTERED(idTransportista)&#xA;);&#xA;&#xA;create table dimEmpleados(&#xA;&#x9;idEmpleado int not null, -- llave primaria&#xA;&#x9;Apellido nvarchar(30) not null,&#xA;&#x9;Nombre nvarchar(10) not null,&#xA;&#x9;Cargo nvarchar(30),&#xA;&#x9;fechaNacimiento datetime,&#xA;&#x9;fechaContratacion datetime,&#xA;&#x9;Direccion nvarchar (60),&#xA;&#x9;Ciudad nvarchar(15),&#xA;&#x9;Pais nvarchar(15),&#xA;&#x9;Territorio nvarchar(150) not null,&#xA;&#x9;Region nchar(50) not null&#xA;&#x9;CONSTRAINT PK_dimEmpleados_idEmpleado PRIMARY KEY CLUSTERED(idEmpleado)&#xA;);&#xA;&#xA;create table dimClientes (&#xA;&#x9;idCliente nchar(5) not null, --llave cliente&#xA;&#x9;Empresa nvarchar(40) not null,&#xA;&#x9;Contacto nvarchar(30),&#xA;&#x9;Cargo nvarchar(30),&#xA;&#x9;Direccion nvarchar(60),&#xA;&#x9;Ciudad nvarchar(15),&#xA;&#x9;codigoPostal nvarchar(10),&#xA;&#x9;Pais nvarchar(15),&#xA;&#x9;Telefono nvarchar(24)&#xA;&#x9;CONSTRAINT PK_dimClientes_idCliente PRIMARY KEY CLUSTERED (idCliente)&#xA;);&#xA;&#xA;create table factOrdenes(&#xA;&#x9;idFecha int not null, --llave foranea&#xA;&#x9;idOrden int not null, --llave primaria&#xA;&#x9;idTransportista int not null, --llave foranea&#xA;&#x9;idEmpleado int not null, --llave foranea&#xA;&#x9;idCliente nchar(5) not null, --llave foranea&#xA;&#x9;ProveedorID  int not null, --llave foranea&#xA;&#x9;ventasPorMes int not null,&#xA;&#x9;ventasPorTerritorio int not null,&#xA;&#x9;ventasMaxPorCliente int not null,&#xA;&#x9;sumaPorTerritorio int not null,&#xA;&#x9;cantidadVentasPorEmpleado int not null&#xA;&#x9;CONSTRAINT PK_factOrdenes_idOrden PRIMARY KEY CLUSTERED (idOrden)&#xA;&#x9;&#xA;);&#xA;&#xA;create table dimFechas(&#xA;&#x9;idFecha int Identity (1, 1 ) not null, --llave primaria&#xA;&#x9;Anio int,&#xA;&#x9;Mes int&#xA;&#x9;CONSTRAINT PK_dimFechas_idFecha PRIMARY KEY CLUSTERED (idFecha)&#xA;);&#xA;&#xA;create table dimProveedores(&#xA;&#x9;ProveedorID int identity(1, 1),&#xA;&#x9;idProveedor int null,&#xA;&#x9;Proveedor nvarchar(40) not null,&#xA;&#x9;Contacto nvarchar(40),&#xA;&#x9;Cargo nvarchar(30),&#xA;&#x9;Direccion nvarchar(60),&#xA;&#x9;Ciudad nvarchar(15),&#xA;&#x9;Pais nvarchar(24),&#xA;&#x9;Telefono nvarchar(24),&#xA;&#x9;Producto nvarchar(40) not null,&#xA;&#x9;Categoria nvarchar(15) not null,&#xA;&#x9;Descripcion ntext,&#xA;&#x9;imagen image,&#xA;&#x9;cantidadPorUnidad nvarchar(20),&#xA;&#x9;precioUnitario money,&#xA;&#x9;Cantidad smallint not null,&#xA;&#x9;Descuento real not null&#xA;&#x9;CONSTRAINT PK_dimProveedores_ProveedorID PRIMARY KEY CLUSTERED (ProveedorID)&#xA;);&#xA;&#xA;&#xA;ALTER TABLE factOrdenes&#xA;ADD CONSTRAINT FK_factOrdenes_idFecha&#xA;FOREIGN KEY (idFecha)&#xA;REFERENCES dimFechas(idFecha);&#xA;&#xA;ALTER TABLE factOrdenes&#xA;ADD CONSTRAINT FK_factOrdenes_idTransportista&#xA;FOREIGN KEY (idTransportista)&#xA;REFERENCES dimTransportistas(idTransportista);&#xA;&#xA;ALTER TABLE factOrdenes&#xA;ADD CONSTRAINT FK_factOrdenes_idEmpleado&#xA;FOREIGN KEY (idEmpleado)&#xA;REFERENCES dimEmpleados(idEmpleado);&#xA;&#xA;ALTER TABLE factOrdenes&#xA;ADD CONSTRAINT FK_factOrdenes_idCliente&#xA;FOREIGN KEY (idCliente)&#xA;REFERENCES dimClientes(idCliente);&#xA;&#xA;ALTER TABLE factOrdenes&#xA;ADD CONSTRAINT FK_factOrdenes_ProveedorID&#xA;FOREIGN KEY (ProveedorID)&#xA;REFERENCES dimProveedores(ProveedorID);&#xA;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+              SQLTask:SqlStatementSource="create table dimTransportistas(&#xA;&#x9;idTransportista int not null, -- nuestra llave primaria&#xA;&#x9;Transportista nvarchar(50),&#xA;&#x9;Telefono nvarchar(24) not null&#xA;);&#xA;&#xA;create table dimEmpleados(&#xA;&#x9;idEmpleado int not null, -- llave primaria&#xA;&#x9;Apellido nvarchar(30) not null,&#xA;&#x9;Nombre nvarchar(10) not null,&#xA;&#x9;Cargo nvarchar(30),&#xA;&#x9;fechaNacimiento datetime,&#xA;&#x9;fechaContratacion datetime,&#xA;&#x9;Direccion nvarchar (60),&#xA;&#x9;Ciudad nvarchar(15),&#xA;&#x9;Pais nvarchar(15),&#xA;&#x9;Territorio nvarchar(150) not null,&#xA;&#x9;Region nchar(50) not null&#xA;);&#xA;&#xA;create table dimClientes (&#xA;&#x9;idCliente nchar(5) not null, --llave cliente&#xA;&#x9;Empresa nvarchar(40) not null,&#xA;&#x9;Contacto nvarchar(30),&#xA;&#x9;Cargo nvarchar(30),&#xA;&#x9;Direccion nvarchar(60),&#xA;&#x9;Ciudad nvarchar(15),&#xA;&#x9;codigoPostal nvarchar(10),&#xA;&#x9;Pais nvarchar(15),&#xA;&#x9;Telefono nvarchar(24)&#xA;);&#xA;&#xA;create table factOrdenes(&#xA;&#x9;idFecha int null, --llave foranea&#xA;&#x9;idOrden int identity (1,1) not null, --llave primaria&#xA;&#x9;idTransportista int null, --llave foranea&#xA;&#x9;idEmpleado int  null, --llave foranea&#xA;&#x9;idCliente nchar(5)  null, --llave foranea&#xA;&#x9;ProveedorID  int null, --llave foranea&#xA;&#x9;&#xA;);&#xA;&#xA;create table dimFechas(&#xA;&#x9;idFecha int Identity (1, 1 ) not null, --llave primaria&#xA;&#x9;Anio int,&#xA;&#x9;Mes int&#xA;);&#xA;&#xA;create table dimProveedores(&#xA;&#x9;ProveedorID int identity(1, 1),&#xA;&#x9;idProveedor int null,&#xA;&#x9;Proveedor nvarchar(40) not null,&#xA;&#x9;Contacto nvarchar(40),&#xA;&#x9;Cargo nvarchar(30),&#xA;&#x9;Direccion nvarchar(60),&#xA;&#x9;Ciudad nvarchar(15),&#xA;&#x9;Pais nvarchar(24),&#xA;&#x9;Telefono nvarchar(24),&#xA;&#x9;Producto nvarchar(40) not null,&#xA;&#x9;Categoria nvarchar(15) not null,&#xA;&#x9;Descripcion ntext,&#xA;&#x9;imagen image,&#xA;&#x9;cantidadPorUnidad nvarchar(20),&#xA;&#x9;precioUnitario money,&#xA;&#x9;Cantidad smallint not null,&#xA;&#x9;Descuento real not null&#xA;);&#xA;&#xA;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
@@ -212,7 +212,7 @@
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{CC432029-C4E9-443D-8C26-7FCDBDC23E6C}"
-              SQLTask:SqlStatementSource="ALTER TABLE factOrdenes&#xA;DROP CONSTRAINT FK_factOrdenes_idFecha;&#xA;&#xA;ALTER TABLE factOrdenes&#xA;DROP CONSTRAINT FK_factOrdenes_idTransportista;&#xA;&#xA;ALTER TABLE factOrdenes&#xA;DROP CONSTRAINT FK_factOrdenes_idEmpleado;&#xA;&#xA;ALTER TABLE factOrdenes&#xA;DROP CONSTRAINT FK_factOrdenes_idCliente;&#xA;&#xA;ALTER TABLE factOrdenes&#xA;DROP CONSTRAINT FK_factOrdenes_ProveedorID;&#xA;&#xA;ALTER TABLE dimTransportistas&#xA;DROP CONSTRAINT PK_dimTransportistas_idTransportista;&#xA;&#xA;ALTER TABLE dimEmpleados&#xA;DROP CONSTRAINT PK_dimEmpleados_idEmpleado;&#xA;&#xA;ALTER TABLE dimClientes&#xA;DROP CONSTRAINT PK_dimClientes_idCliente;&#xA;&#xA;ALTER TABLE dimFechas&#xA;DROP CONSTRAINT PK_dimFechas_idFecha;&#xA;&#xA;ALTER TABLE dimProveedores&#xA;DROP CONSTRAINT PK_dimProveedores_ProveedorID;&#xA;&#xA;&#xA;drop table dimClientes;&#xA;drop table dimEmpleados;&#xA;drop table dimFechas;&#xA;drop table dimProveedores;&#xA;drop table dimTransportistas;&#xA;drop table factOrdenes;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+              SQLTask:SqlStatementSource="&#xA;drop table dimClientes;&#xA;drop table dimEmpleados;&#xA;drop table dimFechas;&#xA;drop table dimProveedores;&#xA;drop table dimTransportistas;&#xA;drop table factOrdenes;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
           </DTS:ObjectData>
         </DTS:Executable>
       </DTS:Executables>
@@ -2853,6 +2853,1086 @@ inner join
             </pipeline>
           </DTS:ObjectData>
         </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{F15B635E-E17C-4D0B-A0C0-2F7AB43CD2AD}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Migrando dimensiones a FactOrdenes"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Destination"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="OLE DB Destination"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[factOrdenes]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Destination.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[LocalHost.KentFoods_DW]"
+                      connectionManagerRefId="Package.ConnectionManagers[LocalHost.KentFoods_DW]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[idCliente]"
+                          cachedDataType="wstr"
+                          cachedLength="5"
+                          cachedName="idCliente"
+                          externalMetadataColumnId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[idCliente]"
+                          lineageId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\Union All.Outputs[Union All Output 1].Columns[idCliente]" />
+                        <inputColumn
+                          refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[idEmpleado]"
+                          cachedDataType="i4"
+                          cachedName="idEmpleado"
+                          externalMetadataColumnId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[idEmpleado]"
+                          lineageId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\Union All.Outputs[Union All Output 1].Columns[idEmpleado]" />
+                        <inputColumn
+                          refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[idFecha]"
+                          cachedDataType="i4"
+                          cachedName="idFecha"
+                          externalMetadataColumnId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[idFecha]"
+                          lineageId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\Union All.Outputs[Union All Output 1].Columns[idFecha]" />
+                        <inputColumn
+                          refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[idTransportista]"
+                          cachedDataType="i4"
+                          cachedName="idTransportista"
+                          externalMetadataColumnId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[idTransportista]"
+                          lineageId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\Union All.Outputs[Union All Output 1].Columns[idTransportista]" />
+                        <inputColumn
+                          refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ProveedorID]"
+                          cachedDataType="i4"
+                          cachedName="ProveedorID"
+                          externalMetadataColumnId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ProveedorID]"
+                          lineageId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\Union All.Outputs[Union All Output 1].Columns[ProveedorID]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[idFecha]"
+                          dataType="i4"
+                          name="idFecha" />
+                        <externalMetadataColumn
+                          refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[idOrden]"
+                          dataType="i4"
+                          name="idOrden" />
+                        <externalMetadataColumn
+                          refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[idTransportista]"
+                          dataType="i4"
+                          name="idTransportista" />
+                        <externalMetadataColumn
+                          refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[idEmpleado]"
+                          dataType="i4"
+                          name="idEmpleado" />
+                        <externalMetadataColumn
+                          refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[idCliente]"
+                          dataType="wstr"
+                          length="5"
+                          name="idCliente" />
+                        <externalMetadataColumn
+                          refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ProveedorID]"
+                          dataType="i4"
+                          name="ProveedorID" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="OLE DB Source"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[dimClientes]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[LocalHost.KentFoods_DW]"
+                      connectionManagerRefId="Package.ConnectionManagers[LocalHost.KentFoods_DW]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source.Outputs[OLE DB Source Output].Columns[idCliente]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[idCliente]"
+                          length="5"
+                          lineageId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source.Outputs[OLE DB Source Output].Columns[idCliente]"
+                          name="idCliente"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[idCliente]"
+                          dataType="wstr"
+                          length="5"
+                          name="idCliente" />
+                        <externalMetadataColumn
+                          refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Empresa]"
+                          dataType="wstr"
+                          length="40"
+                          name="Empresa" />
+                        <externalMetadataColumn
+                          refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Contacto]"
+                          dataType="wstr"
+                          length="30"
+                          name="Contacto" />
+                        <externalMetadataColumn
+                          refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Cargo]"
+                          dataType="wstr"
+                          length="30"
+                          name="Cargo" />
+                        <externalMetadataColumn
+                          refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Direccion]"
+                          dataType="wstr"
+                          length="60"
+                          name="Direccion" />
+                        <externalMetadataColumn
+                          refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Ciudad]"
+                          dataType="wstr"
+                          length="15"
+                          name="Ciudad" />
+                        <externalMetadataColumn
+                          refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[codigoPostal]"
+                          dataType="wstr"
+                          length="10"
+                          name="codigoPostal" />
+                        <externalMetadataColumn
+                          refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Pais]"
+                          dataType="wstr"
+                          length="15"
+                          name="Pais" />
+                        <externalMetadataColumn
+                          refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Telefono]"
+                          dataType="wstr"
+                          length="24"
+                          name="Telefono" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                        <outputColumn
+                          refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[idCliente]"
+                          dataType="wstr"
+                          length="5"
+                          lineageId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[idCliente]"
+                          name="idCliente" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source 1"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="OLE DB Source 1"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[dimEmpleados]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source 1.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[LocalHost.KentFoods_DW]"
+                      connectionManagerRefId="Package.ConnectionManagers[LocalHost.KentFoods_DW]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source 1.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[idEmpleado]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source 1.Outputs[OLE DB Source Output].ExternalColumns[idEmpleado]"
+                          lineageId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[idEmpleado]"
+                          name="idEmpleado"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source 1.Outputs[OLE DB Source Output].ExternalColumns[idEmpleado]"
+                          dataType="i4"
+                          name="idEmpleado" />
+                        <externalMetadataColumn
+                          refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source 1.Outputs[OLE DB Source Output].ExternalColumns[Apellido]"
+                          dataType="wstr"
+                          length="30"
+                          name="Apellido" />
+                        <externalMetadataColumn
+                          refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source 1.Outputs[OLE DB Source Output].ExternalColumns[Nombre]"
+                          dataType="wstr"
+                          length="10"
+                          name="Nombre" />
+                        <externalMetadataColumn
+                          refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source 1.Outputs[OLE DB Source Output].ExternalColumns[Cargo]"
+                          dataType="wstr"
+                          length="30"
+                          name="Cargo" />
+                        <externalMetadataColumn
+                          refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source 1.Outputs[OLE DB Source Output].ExternalColumns[fechaNacimiento]"
+                          dataType="dbTimeStamp"
+                          name="fechaNacimiento" />
+                        <externalMetadataColumn
+                          refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source 1.Outputs[OLE DB Source Output].ExternalColumns[fechaContratacion]"
+                          dataType="dbTimeStamp"
+                          name="fechaContratacion" />
+                        <externalMetadataColumn
+                          refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source 1.Outputs[OLE DB Source Output].ExternalColumns[Direccion]"
+                          dataType="wstr"
+                          length="60"
+                          name="Direccion" />
+                        <externalMetadataColumn
+                          refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source 1.Outputs[OLE DB Source Output].ExternalColumns[Ciudad]"
+                          dataType="wstr"
+                          length="15"
+                          name="Ciudad" />
+                        <externalMetadataColumn
+                          refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source 1.Outputs[OLE DB Source Output].ExternalColumns[Pais]"
+                          dataType="wstr"
+                          length="15"
+                          name="Pais" />
+                        <externalMetadataColumn
+                          refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source 1.Outputs[OLE DB Source Output].ExternalColumns[Territorio]"
+                          dataType="wstr"
+                          length="150"
+                          name="Territorio" />
+                        <externalMetadataColumn
+                          refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source 1.Outputs[OLE DB Source Output].ExternalColumns[Region]"
+                          dataType="wstr"
+                          length="50"
+                          name="Region" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source 1.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                        <outputColumn
+                          refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[idEmpleado]"
+                          dataType="i4"
+                          lineageId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[idEmpleado]"
+                          name="idEmpleado" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source 2"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="OLE DB Source 2"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[dimFechas]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source 2.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[LocalHost.KentFoods_DW]"
+                      connectionManagerRefId="Package.ConnectionManagers[LocalHost.KentFoods_DW]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source 2.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source 2.Outputs[OLE DB Source Output].Columns[idFecha]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source 2.Outputs[OLE DB Source Output].ExternalColumns[idFecha]"
+                          lineageId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source 2.Outputs[OLE DB Source Output].Columns[idFecha]"
+                          name="idFecha"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source 2.Outputs[OLE DB Source Output].ExternalColumns[idFecha]"
+                          dataType="i4"
+                          name="idFecha" />
+                        <externalMetadataColumn
+                          refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source 2.Outputs[OLE DB Source Output].ExternalColumns[Anio]"
+                          dataType="i4"
+                          name="Anio" />
+                        <externalMetadataColumn
+                          refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source 2.Outputs[OLE DB Source Output].ExternalColumns[Mes]"
+                          dataType="i4"
+                          name="Mes" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source 2.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source 2.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source 2.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source 2.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source 2.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                        <outputColumn
+                          refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source 2.Outputs[OLE DB Source Error Output].Columns[idFecha]"
+                          dataType="i4"
+                          lineageId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source 2.Outputs[OLE DB Source Error Output].Columns[idFecha]"
+                          name="idFecha" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source 3"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="OLE DB Source 3"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[dimProveedores]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source 3.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[LocalHost.KentFoods_DW]"
+                      connectionManagerRefId="Package.ConnectionManagers[LocalHost.KentFoods_DW]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source 3.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source 3.Outputs[OLE DB Source Output].Columns[ProveedorID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source 3.Outputs[OLE DB Source Output].ExternalColumns[ProveedorID]"
+                          lineageId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source 3.Outputs[OLE DB Source Output].Columns[ProveedorID]"
+                          name="ProveedorID"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source 3.Outputs[OLE DB Source Output].ExternalColumns[ProveedorID]"
+                          dataType="i4"
+                          name="ProveedorID" />
+                        <externalMetadataColumn
+                          refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source 3.Outputs[OLE DB Source Output].ExternalColumns[idProveedor]"
+                          dataType="i4"
+                          name="idProveedor" />
+                        <externalMetadataColumn
+                          refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source 3.Outputs[OLE DB Source Output].ExternalColumns[Proveedor]"
+                          dataType="wstr"
+                          length="40"
+                          name="Proveedor" />
+                        <externalMetadataColumn
+                          refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source 3.Outputs[OLE DB Source Output].ExternalColumns[Contacto]"
+                          dataType="wstr"
+                          length="40"
+                          name="Contacto" />
+                        <externalMetadataColumn
+                          refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source 3.Outputs[OLE DB Source Output].ExternalColumns[Cargo]"
+                          dataType="wstr"
+                          length="30"
+                          name="Cargo" />
+                        <externalMetadataColumn
+                          refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source 3.Outputs[OLE DB Source Output].ExternalColumns[Direccion]"
+                          dataType="wstr"
+                          length="60"
+                          name="Direccion" />
+                        <externalMetadataColumn
+                          refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source 3.Outputs[OLE DB Source Output].ExternalColumns[Ciudad]"
+                          dataType="wstr"
+                          length="15"
+                          name="Ciudad" />
+                        <externalMetadataColumn
+                          refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source 3.Outputs[OLE DB Source Output].ExternalColumns[Pais]"
+                          dataType="wstr"
+                          length="24"
+                          name="Pais" />
+                        <externalMetadataColumn
+                          refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source 3.Outputs[OLE DB Source Output].ExternalColumns[Telefono]"
+                          dataType="wstr"
+                          length="24"
+                          name="Telefono" />
+                        <externalMetadataColumn
+                          refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source 3.Outputs[OLE DB Source Output].ExternalColumns[Producto]"
+                          dataType="wstr"
+                          length="40"
+                          name="Producto" />
+                        <externalMetadataColumn
+                          refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source 3.Outputs[OLE DB Source Output].ExternalColumns[Categoria]"
+                          dataType="wstr"
+                          length="15"
+                          name="Categoria" />
+                        <externalMetadataColumn
+                          refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source 3.Outputs[OLE DB Source Output].ExternalColumns[Descripcion]"
+                          dataType="nText"
+                          name="Descripcion" />
+                        <externalMetadataColumn
+                          refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source 3.Outputs[OLE DB Source Output].ExternalColumns[imagen]"
+                          dataType="image"
+                          name="imagen" />
+                        <externalMetadataColumn
+                          refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source 3.Outputs[OLE DB Source Output].ExternalColumns[cantidadPorUnidad]"
+                          dataType="wstr"
+                          length="20"
+                          name="cantidadPorUnidad" />
+                        <externalMetadataColumn
+                          refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source 3.Outputs[OLE DB Source Output].ExternalColumns[precioUnitario]"
+                          dataType="cy"
+                          name="precioUnitario" />
+                        <externalMetadataColumn
+                          refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source 3.Outputs[OLE DB Source Output].ExternalColumns[Cantidad]"
+                          dataType="i2"
+                          name="Cantidad" />
+                        <externalMetadataColumn
+                          refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source 3.Outputs[OLE DB Source Output].ExternalColumns[Descuento]"
+                          dataType="r4"
+                          name="Descuento" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source 3.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source 3.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source 3.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source 3.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source 3.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                        <outputColumn
+                          refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source 3.Outputs[OLE DB Source Error Output].Columns[ProveedorID]"
+                          dataType="i4"
+                          lineageId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source 3.Outputs[OLE DB Source Error Output].Columns[ProveedorID]"
+                          name="ProveedorID" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source 4"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="OLE DB Source 4"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[dimTransportistas]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source 4.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[LocalHost.KentFoods_DW]"
+                      connectionManagerRefId="Package.ConnectionManagers[LocalHost.KentFoods_DW]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source 4.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source 4.Outputs[OLE DB Source Output].Columns[idTransportista]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source 4.Outputs[OLE DB Source Output].ExternalColumns[idTransportista]"
+                          lineageId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source 4.Outputs[OLE DB Source Output].Columns[idTransportista]"
+                          name="idTransportista"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source 4.Outputs[OLE DB Source Output].ExternalColumns[idTransportista]"
+                          dataType="i4"
+                          name="idTransportista" />
+                        <externalMetadataColumn
+                          refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source 4.Outputs[OLE DB Source Output].ExternalColumns[Transportista]"
+                          dataType="wstr"
+                          length="50"
+                          name="Transportista" />
+                        <externalMetadataColumn
+                          refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source 4.Outputs[OLE DB Source Output].ExternalColumns[Telefono]"
+                          dataType="wstr"
+                          length="24"
+                          name="Telefono" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source 4.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source 4.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source 4.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source 4.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source 4.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                        <outputColumn
+                          refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source 4.Outputs[OLE DB Source Error Output].Columns[idTransportista]"
+                          dataType="i4"
+                          lineageId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source 4.Outputs[OLE DB Source Error Output].Columns[idTransportista]"
+                          name="idTransportista" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\Union All"
+                  componentClassID="Microsoft.UnionAll"
+                  contactInfo="Union All;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+                  description="Combines rows from multiple data flows without sorting. For example, add rows back to a data flow after correction of errors. If sorting is important, we recommend using the Merge transformation."
+                  name="Union All"
+                  version="1">
+                  <inputs>
+                    <input
+                      refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\Union All.Inputs[Union All Input 3]"
+                      hasSideEffects="true"
+                      name="Union All Input 3">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\Union All.Inputs[Union All Input 3].Columns[idCliente]"
+                          cachedDataType="wstr"
+                          cachedLength="5"
+                          cachedName="idCliente"
+                          lineageId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source.Outputs[OLE DB Source Output].Columns[idCliente]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\Union All.Outputs[Union All Output 1].Columns[idCliente]}</property>
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                    <input
+                      refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\Union All.Inputs[Union All Input 1]"
+                      hasSideEffects="true"
+                      name="Union All Input 1">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\Union All.Inputs[Union All Input 1].Columns[idEmpleado]"
+                          cachedDataType="i4"
+                          cachedName="idEmpleado"
+                          lineageId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[idEmpleado]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\Union All.Outputs[Union All Output 1].Columns[idEmpleado]}</property>
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                    <input
+                      refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\Union All.Inputs[Union All Input 2]"
+                      hasSideEffects="true"
+                      name="Union All Input 2">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\Union All.Inputs[Union All Input 2].Columns[idFecha]"
+                          cachedDataType="i4"
+                          cachedName="idFecha"
+                          lineageId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source 2.Outputs[OLE DB Source Output].Columns[idFecha]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\Union All.Outputs[Union All Output 1].Columns[idFecha]}</property>
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                    <input
+                      refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\Union All.Inputs[Union All Input 4]"
+                      hasSideEffects="true"
+                      name="Union All Input 4">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\Union All.Inputs[Union All Input 4].Columns[ProveedorID]"
+                          cachedDataType="i4"
+                          cachedName="ProveedorID"
+                          lineageId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source 3.Outputs[OLE DB Source Output].Columns[ProveedorID]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\Union All.Outputs[Union All Output 1].Columns[ProveedorID]}</property>
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                    <input
+                      refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\Union All.Inputs[Union All Input 5]"
+                      hasSideEffects="true"
+                      name="Union All Input 5">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\Union All.Inputs[Union All Input 5].Columns[idTransportista]"
+                          cachedDataType="i4"
+                          cachedName="idTransportista"
+                          lineageId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source 4.Outputs[OLE DB Source Output].Columns[idTransportista]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\Union All.Outputs[Union All Output 1].Columns[idTransportista]}</property>
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                    <input
+                      refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\Union All.Inputs[Union All Input 6]"
+                      dangling="true"
+                      hasSideEffects="true"
+                      name="Union All Input 6">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\Union All.Outputs[Union All Output 1]"
+                      name="Union All Output 1">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\Union All.Outputs[Union All Output 1].Columns[idCliente]"
+                          dataType="wstr"
+                          length="5"
+                          lineageId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\Union All.Outputs[Union All Output 1].Columns[idCliente]"
+                          name="idCliente" />
+                        <outputColumn
+                          refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\Union All.Outputs[Union All Output 1].Columns[idEmpleado]"
+                          dataType="i4"
+                          lineageId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\Union All.Outputs[Union All Output 1].Columns[idEmpleado]"
+                          name="idEmpleado" />
+                        <outputColumn
+                          refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\Union All.Outputs[Union All Output 1].Columns[idFecha]"
+                          dataType="i4"
+                          lineageId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\Union All.Outputs[Union All Output 1].Columns[idFecha]"
+                          name="idFecha" />
+                        <outputColumn
+                          refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\Union All.Outputs[Union All Output 1].Columns[ProveedorID]"
+                          dataType="i4"
+                          lineageId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\Union All.Outputs[Union All Output 1].Columns[ProveedorID]"
+                          name="ProveedorID" />
+                        <outputColumn
+                          refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\Union All.Outputs[Union All Output 1].Columns[idTransportista]"
+                          dataType="i4"
+                          lineageId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\Union All.Outputs[Union All Output 1].Columns[idTransportista]"
+                          name="idTransportista" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes.Paths[OLE DB Source Output]"
+                  endId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\Union All.Inputs[Union All Input 3]"
+                  name="OLE DB Source Output"
+                  startId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source.Outputs[OLE DB Source Output]" />
+                <path
+                  refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes.Paths[OLE DB Source Output1]"
+                  endId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\Union All.Inputs[Union All Input 1]"
+                  name="OLE DB Source Output"
+                  startId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source 1.Outputs[OLE DB Source Output]" />
+                <path
+                  refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes.Paths[OLE DB Source Output2]"
+                  endId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\Union All.Inputs[Union All Input 2]"
+                  name="OLE DB Source Output"
+                  startId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source 2.Outputs[OLE DB Source Output]" />
+                <path
+                  refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes.Paths[OLE DB Source Output3]"
+                  endId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\Union All.Inputs[Union All Input 4]"
+                  name="OLE DB Source Output"
+                  startId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source 3.Outputs[OLE DB Source Output]" />
+                <path
+                  refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes.Paths[OLE DB Source Output4]"
+                  endId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\Union All.Inputs[Union All Input 5]"
+                  name="OLE DB Source Output"
+                  startId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source 4.Outputs[OLE DB Source Output]" />
+                <path
+                  refId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes.Paths[Union All Output 1]"
+                  endId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  name="Union All Output 1"
+                  startId="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\Union All.Outputs[Union All Output 1]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
       </DTS:Executables>
       <DTS:PrecedenceConstraints>
         <DTS:PrecedenceConstraint
@@ -2887,6 +3967,14 @@ inner join
           DTS:LogicalAnd="True"
           DTS:ObjectName="Restricción 3"
           DTS:To="Package\Migracion de datos a DW\Migracion de Fechas de tabla Ordenes a dimFechas" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Migracion de datos a DW.PrecedenceConstraints[Restricción 4]"
+          DTS:CreationName=""
+          DTS:DTSID="{A4D24DF7-F37A-4D33-B3C5-81FFA7D98CF5}"
+          DTS:From="Package\Migracion de datos a DW\Migracion de Fechas de tabla Ordenes a dimFechas"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Restricción 4"
+          DTS:To="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes" />
       </DTS:PrecedenceConstraints>
     </DTS:Executable>
   </DTS:Executables>
@@ -2911,7 +3999,7 @@ inner join
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="223,42"
           Id="Package\Eliminar y Crear tablas de Kentfoods_DW\Crear tablas de Kentfoods_DW"
@@ -2948,7 +4036,7 @@ inner join
           PanelSize="331,265"
           Size="331,308"
           Id="Package\Eliminar y Crear tablas de Kentfoods_DW"
-          TopLeft="19.7023809523809,130.615079365079" />
+          TopLeft="69.7023809523809,118.392857142857" />
         <NodeLayout
           Size="320,42"
           Id="Package\Migracion de datos a DW\Migracion de Fechas de tabla Ordenes a dimFechas"
@@ -2956,11 +4044,11 @@ inner join
         <NodeLayout
           Size="272,42"
           Id="Package\Migracion de datos a DW\Migracion de tabla Clientes a dimClientes"
-          TopLeft="57,106.5" />
+          TopLeft="52.7142857142858,109.357142857143" />
         <NodeLayout
           Size="329,42"
           Id="Package\Migracion de datos a DW\Migracion de tabla transportistas a dimTransportistas"
-          TopLeft="35,19.5000000000001" />
+          TopLeft="23.5714285714286,25.2142857142858" />
         <NodeLayout
           Size="251,42"
           Id="Package\Migracion de datos a DW\Migracion de tablas a dimEmpleados"
@@ -2971,18 +4059,18 @@ inner join
           TopLeft="55.25,289.5" />
         <EdgeLayout
           Id="Package\Migracion de datos a DW.PrecedenceConstraints[Restricción]"
-          TopLeft="196.25,61.5000000000001">
+          TopLeft="188.392857142857,67.2142857142858">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,45"
+              EndConnector="0,42.142857142857"
               Start="0,0"
-              End="0,37.5">
+              End="0,34.642857142857">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,37.5" />
+                    End="0,34.642857142857" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2993,18 +4081,18 @@ inner join
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Migracion de datos a DW.PrecedenceConstraints[Restricción 1]"
-          TopLeft="189.375,148.5">
+          TopLeft="187.232142857143,151.357142857143">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,54.0000000000001"
+              EndConnector="0,51.1428571428572"
               Start="0,0"
-              End="0,46.5000000000001">
+              End="0,43.6428571428572">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,46.5000000000001" />
+                    End="0,43.6428571428572" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3057,39 +4145,65 @@ inner join
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <ContainerLayout
-          HeaderHeight="43"
-          IsExpanded="True"
-          PanelSize="654,612"
-          Size="654,655"
-          Id="Package\Migracion de datos a DW"
-          TopLeft="411.623015873016,7.70634920634927" />
+        <NodeLayout
+          Size="255,42"
+          Id="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes"
+          TopLeft="55.333333333333,470.666666666667" />
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Restricción]"
-          TopLeft="350.702380952381,284.615079365079">
+          Id="Package\Migracion de datos a DW.PrecedenceConstraints[Restricción 4]"
+          TopLeft="183.613095238095,417.071428571429">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="60.9206349206351,50.5912698412703"
+              EndConnector="0,53.5952380952382"
               Start="0,0"
-              End="53.4206349206351,50.5912698412703">
+              End="0,46.0952380952382">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="26.4603174603176,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="26.4603174603176,0"
-                    Point2="30.4603174603176,0"
-                    Point3="30.4603174603176,4" />
+                    End="0,46.0952380952382" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="586,582"
+          Size="586,625"
+          Id="Package\Migracion de datos a DW"
+          TopLeft="527.972222222222,12.9444444444445" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción]"
+          TopLeft="400.702380952381,272.392857142857">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="127.269841269841,53.0515873015877"
+              Start="0,0"
+              End="119.769841269841,53.0515873015877">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
                   <mssgle:LineSegment
-                    End="30.4603174603176,46.5912698412703" />
+                    End="59.6349206349207,0" />
                   <mssgle:CubicBezierSegment
-                    Point1="30.4603174603176,46.5912698412703"
-                    Point2="30.4603174603176,50.5912698412703"
-                    Point3="34.4603174603176,50.5912698412703" />
+                    Point1="59.6349206349207,0"
+                    Point2="63.6349206349207,0"
+                    Point3="63.6349206349207,4" />
                   <mssgle:LineSegment
-                    End="53.4206349206351,50.5912698412703" />
+                    End="63.6349206349207,49.0515873015877" />
+                  <mssgle:CubicBezierSegment
+                    Point1="63.6349206349207,49.0515873015877"
+                    Point2="63.6349206349207,53.0515873015877"
+                    Point3="67.6349206349207,53.0515873015877" />
+                  <mssgle:LineSegment
+                    End="119.769841269841,53.0515873015877" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3105,7 +4219,7 @@ inner join
     design-time-name="Package\Migracion de datos a DW\Migracion de Fechas de tabla Ordenes a dimFechas">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="154,42"
           Id="Package\Migracion de datos a DW\Migracion de Fechas de tabla Ordenes a dimFechas\Derived Column"
@@ -3137,9 +4251,7 @@ inner join
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -3161,9 +4273,7 @@ inner join
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -3467,6 +4577,300 @@ inner join
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="150,42"
+          Id="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source"
+          TopLeft="44,57" />
+        <NodeLayout
+          Size="121,42"
+          Id="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\Union All"
+          TopLeft="322,268" />
+        <NodeLayout
+          Size="159,42"
+          Id="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source 1"
+          TopLeft="229,63" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Destination"
+          TopLeft="295,395" />
+        <EdgeLayout
+          Id="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes.Paths[Union All Output 1]"
+          TopLeft="381.5,310">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,85"
+              Start="0,0"
+              End="0,77.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,77.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="159,42"
+          Id="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source 2"
+          TopLeft="441,66" />
+        <NodeLayout
+          Size="159,42"
+          Id="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source 3"
+          TopLeft="659,74" />
+        <NodeLayout
+          Size="159,42"
+          Id="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source 4"
+          TopLeft="751,266" />
+        <EdgeLayout
+          Id="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes.Paths[OLE DB Source Output]"
+          TopLeft="119,99">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="229.6,169"
+              Start="0,0"
+              End="229.6,161.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,113.388059701492" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,113.388059701492"
+                    Point2="0,117.388059701492"
+                    Point3="4,117.388059701492" />
+                  <mssgle:LineSegment
+                    End="225.6,117.388059701492" />
+                  <mssgle:CubicBezierSegment
+                    Point1="225.6,117.388059701492"
+                    Point2="229.6,117.388059701492"
+                    Point3="229.6,121.388059701492" />
+                  <mssgle:LineSegment
+                    End="229.6,161.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes.Paths[OLE DB Source Output1]"
+          TopLeft="308.5,105">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="62.7,163"
+              Start="0,0"
+              End="62.7,155.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,85.8951686417502" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,85.8951686417502"
+                    Point2="0,89.8951686417502"
+                    Point3="4,89.8951686417502" />
+                  <mssgle:LineSegment
+                    End="58.7,89.8951686417502" />
+                  <mssgle:CubicBezierSegment
+                    Point1="58.7,89.8951686417502"
+                    Point2="62.7,89.8951686417502"
+                    Point3="62.7,93.8951686417502" />
+                  <mssgle:LineSegment
+                    End="62.7,155.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes.Paths[OLE DB Source Output2]"
+          TopLeft="520.5,108">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-126.7,160"
+              Start="0,0"
+              End="-126.7,152.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,84.2406563354604" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,84.2406563354604"
+                    Point2="0,88.2406563354604"
+                    Point3="-4,88.2406563354604" />
+                  <mssgle:LineSegment
+                    End="-122.7,88.2406563354604" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-122.7,88.2406563354604"
+                    Point2="-126.7,88.2406563354604"
+                    Point3="-126.7,92.2406563354604" />
+                  <mssgle:LineSegment
+                    End="-126.7,152.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes.Paths[OLE DB Source Output3]"
+          TopLeft="738.5,116">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-322.1,152"
+              Start="0,0"
+              End="-322.1,144.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,101.579793340987" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,101.579793340987"
+                    Point2="0,105.579793340987"
+                    Point3="-4,105.579793340987" />
+                  <mssgle:LineSegment
+                    End="-318.1,105.579793340987" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-318.1,105.579793340987"
+                    Point2="-322.1,105.579793340987"
+                    Point3="-322.1,109.579793340987" />
+                  <mssgle:LineSegment
+                    End="-322.1,144.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes.Paths[OLE DB Source Output4]"
+          TopLeft="751,288">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-308,0"
+              Start="0,0"
+              End="-300.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-300.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source 1">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source 2">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source 3">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Migracion de datos a DW\Migrando dimensiones a FactOrdenes\OLE DB Source 4">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
