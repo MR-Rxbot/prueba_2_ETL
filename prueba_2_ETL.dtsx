@@ -11,11 +11,103 @@
   DTS:LocaleID="13322"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="74"
-  DTS:VersionGUID="{C60B708E-7E67-4B4B-89C4-B69E45FEAE60}">
+  DTS:VersionBuild="118"
+  DTS:VersionGUID="{B1CE8384-799E-497B-BF8B-2A4F8616432E}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Administrador de conexiones de archivos planos]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{752995C5-C571-4CAE-8208-508E0DBE59B9}"
+      DTS:ObjectName="Administrador de conexiones de archivos planos">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="13322"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="C:\Users\luisa\OneDrive\Escritorio\Inteligencia de negocios recursos\Udemy curso\probando_exportacion_fechas.txt">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Columna 0"
+              DTS:DTSID="{40F445C6-BEC1-4600-A8E9-34257E2AABA3}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Anio"
+              DTS:DTSID="{4BA40433-A1E0-4096-8E31-4F738DFE4EB7}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Mes"
+              DTS:DTSID="{3B3AABDB-39EB-4546-896F-8BAD5A14A1A7}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Flat File Connection Manager]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{268D581C-8C6E-4F8D-83F3-2B1058F6A500}"
+      DTS:ObjectName="Flat File Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="13322"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="C:\Users\luisa\OneDrive\Escritorio\Inteligencia de negocios recursos\Udemy curso\probando_exportacion_fechas.txt">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="135"
+              DTS:TextQualified="True"
+              DTS:ObjectName="FechaOrden"
+              DTS:DTSID="{405D6396-63C7-4C3E-A4B4-B1E3B21ED551}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="4"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Anio"
+              DTS:DTSID="{E239B7E9-E14E-414D-88E7-8F7693B52848}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="2"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Mes"
+              DTS:DTSID="{B6289454-5F5D-4C45-9FBC-DDE4809127C1}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[LocalHost.KentFoods]"
       DTS:CreationName="OLEDB"
@@ -103,7 +195,7 @@
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{CC432029-C4E9-443D-8C26-7FCDBDC23E6C}"
-              SQLTask:SqlStatementSource="create table dimTransportistas(&#xA;&#x9;idTransportista int not null, -- nuestra llave primaria&#xA;&#x9;Transportista nvarchar(50),&#xA;&#x9;Telefono nvarchar(24) not null&#xA;);&#xA;&#xA;create table dimEmpleados(&#xA;&#x9;idEmpleado int not null, -- llave primaria&#xA;&#x9;Apellido nvarchar(30) not null,&#xA;&#x9;Nombre nvarchar(10) not null,&#xA;&#x9;Cargo nvarchar(30),&#xA;&#x9;fechaNacimiento datetime,&#xA;&#x9;fechaContratacion datetime,&#xA;&#x9;Direccion nvarchar (60),&#xA;&#x9;Ciudad nvarchar(15),&#xA;&#x9;Pais nvarchar(15),&#xA;&#x9;Territorio nvarchar(50) not null,&#xA;&#x9;Region nchar(50) not null&#xA;&#x9;&#xA;);&#xA;&#xA;create table dimClientes (&#xA;&#x9;idCliente nchar(5) not null, --llave cliente&#xA;&#x9;Empresa nvarchar(40) not null,&#xA;&#x9;Contacto nvarchar(30),&#xA;&#x9;Cargo nvarchar(30),&#xA;&#x9;Direccion nvarchar(60),&#xA;&#x9;Ciudad nvarchar(15),&#xA;&#x9;codigoPostal nvarchar(10),&#xA;&#x9;Pais nvarchar(15),&#xA;&#x9;Telefono nvarchar(24)&#xA;&#x9;&#xA;);&#xA;&#xA;create table factOrdenes(&#xA;&#x9;idFecha int not null, --llave foranea&#xA;&#x9;idOrden int not null, --llave primaria&#xA;&#x9;idTransportista int not null, --llave foranea&#xA;&#x9;idEmpleado int not null, --llave foranea&#xA;&#x9;idCliente int not null, --llave foranea&#xA;&#x9;idProveedor int not null, --llave foranea&#xA;&#x9;ventasPorMes int not null,&#xA;&#x9;ventasPorTerritorio int not null,&#xA;&#x9;ventasMaxPorCliente int not null,&#xA;&#x9;sumaPorTerritorio int not null,&#xA;&#x9;cantidadVentasPorEmpleado int not null&#xA;&#x9;&#xA;);&#xA;&#xA;create table dimFechas(&#xA;&#x9;idFecha int Identity (1, 1 ) not null, --llave primaria&#xA;&#x9;Anio datetime  null,&#xA;&#x9;Mes datetime null&#xA;);&#xA;&#xA;create table dimProveedores(&#xA;&#x9;idProveedor int not null, --llave primaria&#xA;&#x9;Proveedor nvarchar(40) not null,&#xA;&#x9;Contacto nvarchar(40),&#xA;&#x9;Cargo nvarchar(30),&#xA;&#x9;Direccion nvarchar(60),&#xA;&#x9;Ciudad nvarchar(15),&#xA;&#x9;Pais nvarchar(24),&#xA;&#x9;Telefono nvarchar(24),&#xA;&#x9;Producto nvarchar(40) not null,&#xA;&#x9;Categoria nvarchar(15) not null,&#xA;&#x9;Descripcion ntext,&#xA;&#x9;imagen image,&#xA;&#x9;cantidadPorUnidad nvarchar(20),&#xA;&#x9;precioUnitario money,&#xA;&#x9;Cantidad smallint not null,&#xA;&#x9;Descuento real not null&#xA;);&#xA;&#xA;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+              SQLTask:SqlStatementSource="create table dimTransportistas(&#xA;&#x9;idTransportista int not null, -- nuestra llave primaria&#xA;&#x9;Transportista nvarchar(50),&#xA;&#x9;Telefono nvarchar(24) not null&#xA;);&#xA;&#xA;create table dimEmpleados(&#xA;&#x9;idEmpleado int not null, -- llave primaria&#xA;&#x9;Apellido nvarchar(30) not null,&#xA;&#x9;Nombre nvarchar(10) not null,&#xA;&#x9;Cargo nvarchar(30),&#xA;&#x9;fechaNacimiento datetime,&#xA;&#x9;fechaContratacion datetime,&#xA;&#x9;Direccion nvarchar (60),&#xA;&#x9;Ciudad nvarchar(15),&#xA;&#x9;Pais nvarchar(15),&#xA;&#x9;Territorio nvarchar(50) not null,&#xA;&#x9;Region nchar(50) not null&#xA;&#x9;&#xA;);&#xA;&#xA;create table dimClientes (&#xA;&#x9;idCliente nchar(5) not null, --llave cliente&#xA;&#x9;Empresa nvarchar(40) not null,&#xA;&#x9;Contacto nvarchar(30),&#xA;&#x9;Cargo nvarchar(30),&#xA;&#x9;Direccion nvarchar(60),&#xA;&#x9;Ciudad nvarchar(15),&#xA;&#x9;codigoPostal nvarchar(10),&#xA;&#x9;Pais nvarchar(15),&#xA;&#x9;Telefono nvarchar(24)&#xA;&#x9;&#xA;);&#xA;&#xA;create table factOrdenes(&#xA;&#x9;idFecha int not null, --llave foranea&#xA;&#x9;idOrden int not null, --llave primaria&#xA;&#x9;idTransportista int not null, --llave foranea&#xA;&#x9;idEmpleado int not null, --llave foranea&#xA;&#x9;idCliente int not null, --llave foranea&#xA;&#x9;idProveedor int not null, --llave foranea&#xA;&#x9;ventasPorMes int not null,&#xA;&#x9;ventasPorTerritorio int not null,&#xA;&#x9;ventasMaxPorCliente int not null,&#xA;&#x9;sumaPorTerritorio int not null,&#xA;&#x9;cantidadVentasPorEmpleado int not null&#xA;&#x9;&#xA;);&#xA;&#xA;create table dimFechas(&#xA;&#x9;idFecha int Identity (1, 1 ) not null, --llave primaria&#xA;&#x9;Anio int,&#xA;&#x9;Mes int&#xA;);&#xA;&#xA;create table dimProveedores(&#xA;&#x9;idProveedor int not null, --llave primaria&#xA;&#x9;Proveedor nvarchar(40) not null,&#xA;&#x9;Contacto nvarchar(40),&#xA;&#x9;Cargo nvarchar(30),&#xA;&#x9;Direccion nvarchar(60),&#xA;&#x9;Ciudad nvarchar(15),&#xA;&#x9;Pais nvarchar(24),&#xA;&#x9;Telefono nvarchar(24),&#xA;&#x9;Producto nvarchar(40) not null,&#xA;&#x9;Categoria nvarchar(15) not null,&#xA;&#x9;Descripcion ntext,&#xA;&#x9;imagen image,&#xA;&#x9;cantidadPorUnidad nvarchar(20),&#xA;&#x9;precioUnitario money,&#xA;&#x9;Cantidad smallint not null,&#xA;&#x9;Descuento real not null&#xA;);&#xA;&#xA;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
@@ -146,13 +238,13 @@
       <DTS:Variables />
       <DTS:Executables>
         <DTS:Executable
-          DTS:refId="Package\Migracion de datos a DW\Migracion de fechas a dimFechas"
+          DTS:refId="Package\Migracion de datos a DW\Data Flow Task"
           DTS:CreationName="Microsoft.Pipeline"
           DTS:Description="Data Flow Task"
-          DTS:DTSID="{BF3AD41B-9A35-450A-86BC-E8B4B763F060}"
+          DTS:DTSID="{4B72CD8B-3207-4B3B-B127-DA6895CEBA46}"
           DTS:ExecutableType="Microsoft.Pipeline"
           DTS:LocaleID="-1"
-          DTS:ObjectName="Migracion de fechas a dimFechas"
+          DTS:ObjectName="Data Flow Task"
           DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
           <DTS:Variables />
           <DTS:ObjectData>
@@ -160,7 +252,108 @@
               version="1">
               <components>
                 <component
-                  refId="Package\Migracion de datos a DW\Migracion de fechas a dimFechas\Derived Column"
+                  refId="Package\Migracion de datos a DW\Data Flow Task\OLE DB Source"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="OLE DB Source"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset"></property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Migracion de datos a DW\Data Flow Task\OLE DB Source.Connections[OleDbConnection]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Migracion de datos a DW\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <externalMetadataColumns
+                        isUsed="True" />
+                    </output>
+                    <output
+                      refId="Package\Migracion de datos a DW\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Migracion de datos a DW\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Migracion de datos a DW\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Migracion de datos a DW\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Migracion de datos a DW\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Migracion de datos a DW\Migracion de Fechas de tabla Ordenes a dimFechas"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{DF38A942-14EE-4058-A462-31CF67FE3E8B}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Migracion de Fechas de tabla Ordenes a dimFechas"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Migracion de datos a DW\Migracion de Fechas de tabla Ordenes a dimFechas\Derived Column"
                   componentClassID="Microsoft.DerivedColumn"
                   contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
                   description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
@@ -168,33 +361,33 @@
                   usesDispositions="true">
                   <inputs>
                     <input
-                      refId="Package\Migracion de datos a DW\Migracion de fechas a dimFechas\Derived Column.Inputs[Derived Column Input]"
+                      refId="Package\Migracion de datos a DW\Migracion de Fechas de tabla Ordenes a dimFechas\Derived Column.Inputs[Derived Column Input]"
                       description="Input to the Derived Column Transformation"
                       name="Derived Column Input">
                       <inputColumns>
                         <inputColumn
-                          refId="Package\Migracion de datos a DW\Migracion de fechas a dimFechas\Derived Column.Inputs[Derived Column Input].Columns[FechaOrden]"
+                          refId="Package\Migracion de datos a DW\Migracion de Fechas de tabla Ordenes a dimFechas\Derived Column.Inputs[Derived Column Input].Columns[FechaOrden]"
                           cachedDataType="dbTimeStamp"
                           cachedName="FechaOrden"
-                          lineageId="Package\Migracion de datos a DW\Migracion de fechas a dimFechas\OLE DB Source.Outputs[OLE DB Source Output].Columns[FechaOrden]" />
+                          lineageId="Package\Migracion de datos a DW\Migracion de Fechas de tabla Ordenes a dimFechas\OLE DB Source.Outputs[OLE DB Source Output].Columns[FechaOrden]" />
                       </inputColumns>
                       <externalMetadataColumns />
                     </input>
                   </inputs>
                   <outputs>
                     <output
-                      refId="Package\Migracion de datos a DW\Migracion de fechas a dimFechas\Derived Column.Outputs[Derived Column Output]"
+                      refId="Package\Migracion de datos a DW\Migracion de Fechas de tabla Ordenes a dimFechas\Derived Column.Outputs[Derived Column Output]"
                       description="Default Output of the Derived Column Transformation"
                       exclusionGroup="1"
                       name="Derived Column Output"
-                      synchronousInputId="Package\Migracion de datos a DW\Migracion de fechas a dimFechas\Derived Column.Inputs[Derived Column Input]">
+                      synchronousInputId="Package\Migracion de datos a DW\Migracion de Fechas de tabla Ordenes a dimFechas\Derived Column.Inputs[Derived Column Input]">
                       <outputColumns>
                         <outputColumn
-                          refId="Package\Migracion de datos a DW\Migracion de fechas a dimFechas\Derived Column.Outputs[Derived Column Output].Columns[Anio]"
+                          refId="Package\Migracion de datos a DW\Migracion de Fechas de tabla Ordenes a dimFechas\Derived Column.Outputs[Derived Column Output].Columns[Anio]"
                           dataType="i4"
                           errorOrTruncationOperation="Computation"
                           errorRowDisposition="FailComponent"
-                          lineageId="Package\Migracion de datos a DW\Migracion de fechas a dimFechas\Derived Column.Outputs[Derived Column Output].Columns[Anio]"
+                          lineageId="Package\Migracion de datos a DW\Migracion de Fechas de tabla Ordenes a dimFechas\Derived Column.Outputs[Derived Column Output].Columns[Anio]"
                           name="Anio"
                           truncationRowDisposition="FailComponent">
                           <properties>
@@ -202,7 +395,7 @@
                               containsID="true"
                               dataType="System.String"
                               description="Derived Column Expression"
-                              name="Expression">[YEAR](#{Package\Migracion de datos a DW\Migracion de fechas a dimFechas\OLE DB Source.Outputs[OLE DB Source Output].Columns[FechaOrden]})</property>
+                              name="Expression">[YEAR](#{Package\Migracion de datos a DW\Migracion de Fechas de tabla Ordenes a dimFechas\OLE DB Source.Outputs[OLE DB Source Output].Columns[FechaOrden]})</property>
                             <property
                               containsID="true"
                               dataType="System.String"
@@ -212,11 +405,11 @@
                           </properties>
                         </outputColumn>
                         <outputColumn
-                          refId="Package\Migracion de datos a DW\Migracion de fechas a dimFechas\Derived Column.Outputs[Derived Column Output].Columns[Mes]"
+                          refId="Package\Migracion de datos a DW\Migracion de Fechas de tabla Ordenes a dimFechas\Derived Column.Outputs[Derived Column Output].Columns[Mes]"
                           dataType="i4"
                           errorOrTruncationOperation="Computation"
                           errorRowDisposition="FailComponent"
-                          lineageId="Package\Migracion de datos a DW\Migracion de fechas a dimFechas\Derived Column.Outputs[Derived Column Output].Columns[Mes]"
+                          lineageId="Package\Migracion de datos a DW\Migracion de Fechas de tabla Ordenes a dimFechas\Derived Column.Outputs[Derived Column Output].Columns[Mes]"
                           name="Mes"
                           truncationRowDisposition="FailComponent">
                           <properties>
@@ -224,7 +417,7 @@
                               containsID="true"
                               dataType="System.String"
                               description="Derived Column Expression"
-                              name="Expression">[MONTH](#{Package\Migracion de datos a DW\Migracion de fechas a dimFechas\OLE DB Source.Outputs[OLE DB Source Output].Columns[FechaOrden]})</property>
+                              name="Expression">[MONTH](#{Package\Migracion de datos a DW\Migracion de Fechas de tabla Ordenes a dimFechas\OLE DB Source.Outputs[OLE DB Source Output].Columns[FechaOrden]})</property>
                             <property
                               containsID="true"
                               dataType="System.String"
@@ -237,23 +430,23 @@
                       <externalMetadataColumns />
                     </output>
                     <output
-                      refId="Package\Migracion de datos a DW\Migracion de fechas a dimFechas\Derived Column.Outputs[Derived Column Error Output]"
+                      refId="Package\Migracion de datos a DW\Migracion de Fechas de tabla Ordenes a dimFechas\Derived Column.Outputs[Derived Column Error Output]"
                       description="Error Output of the Derived Column Transformation"
                       exclusionGroup="1"
                       isErrorOut="true"
                       name="Derived Column Error Output"
-                      synchronousInputId="Package\Migracion de datos a DW\Migracion de fechas a dimFechas\Derived Column.Inputs[Derived Column Input]">
+                      synchronousInputId="Package\Migracion de datos a DW\Migracion de Fechas de tabla Ordenes a dimFechas\Derived Column.Inputs[Derived Column Input]">
                       <outputColumns>
                         <outputColumn
-                          refId="Package\Migracion de datos a DW\Migracion de fechas a dimFechas\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          refId="Package\Migracion de datos a DW\Migracion de Fechas de tabla Ordenes a dimFechas\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
                           dataType="i4"
-                          lineageId="Package\Migracion de datos a DW\Migracion de fechas a dimFechas\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          lineageId="Package\Migracion de datos a DW\Migracion de Fechas de tabla Ordenes a dimFechas\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
                           name="ErrorCode"
                           specialFlags="1" />
                         <outputColumn
-                          refId="Package\Migracion de datos a DW\Migracion de fechas a dimFechas\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          refId="Package\Migracion de datos a DW\Migracion de Fechas de tabla Ordenes a dimFechas\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
                           dataType="i4"
-                          lineageId="Package\Migracion de datos a DW\Migracion de fechas a dimFechas\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          lineageId="Package\Migracion de datos a DW\Migracion de Fechas de tabla Ordenes a dimFechas\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
                           name="ErrorColumn"
                           specialFlags="2" />
                       </outputColumns>
@@ -262,7 +455,7 @@
                   </outputs>
                 </component>
                 <component
-                  refId="Package\Migracion de datos a DW\Migracion de fechas a dimFechas\OLE DB Destination"
+                  refId="Package\Migracion de datos a DW\Migracion de Fechas de tabla Ordenes a dimFechas\OLE DB Destination"
                   componentClassID="Microsoft.OLEDBDestination"
                   contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
                   description="OLE DB Destination"
@@ -299,7 +492,7 @@
                       dataType="System.Int32"
                       description="Specifies the mode used to access the database."
                       name="AccessMode"
-                      typeConverter="AccessMode">3</property>
+                      typeConverter="AccessMode">0</property>
                     <property
                       dataType="System.Boolean"
                       description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
@@ -311,7 +504,7 @@
                     <property
                       dataType="System.String"
                       description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
-                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                      name="FastLoadOptions"></property>
                     <property
                       dataType="System.Int32"
                       description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
@@ -319,7 +512,7 @@
                   </properties>
                   <connections>
                     <connection
-                      refId="Package\Migracion de datos a DW\Migracion de fechas a dimFechas\OLE DB Destination.Connections[OleDbConnection]"
+                      refId="Package\Migracion de datos a DW\Migracion de Fechas de tabla Ordenes a dimFechas\OLE DB Destination.Connections[OleDbConnection]"
                       connectionManagerID="Package.ConnectionManagers[LocalHost.KentFoods_DW]"
                       connectionManagerRefId="Package.ConnectionManagers[LocalHost.KentFoods_DW]"
                       description="The OLE DB runtime connection used to access the database."
@@ -327,60 +520,60 @@
                   </connections>
                   <inputs>
                     <input
-                      refId="Package\Migracion de datos a DW\Migracion de fechas a dimFechas\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                      refId="Package\Migracion de datos a DW\Migracion de Fechas de tabla Ordenes a dimFechas\OLE DB Destination.Inputs[OLE DB Destination Input]"
                       errorOrTruncationOperation="Insert"
                       errorRowDisposition="FailComponent"
                       hasSideEffects="true"
                       name="OLE DB Destination Input">
                       <inputColumns>
                         <inputColumn
-                          refId="Package\Migracion de datos a DW\Migracion de fechas a dimFechas\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Anio]"
+                          refId="Package\Migracion de datos a DW\Migracion de Fechas de tabla Ordenes a dimFechas\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Anio]"
                           cachedDataType="i4"
                           cachedName="Anio"
-                          externalMetadataColumnId="Package\Migracion de datos a DW\Migracion de fechas a dimFechas\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Anio]"
-                          lineageId="Package\Migracion de datos a DW\Migracion de fechas a dimFechas\Derived Column.Outputs[Derived Column Output].Columns[Anio]" />
+                          externalMetadataColumnId="Package\Migracion de datos a DW\Migracion de Fechas de tabla Ordenes a dimFechas\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Anio]"
+                          lineageId="Package\Migracion de datos a DW\Migracion de Fechas de tabla Ordenes a dimFechas\Derived Column.Outputs[Derived Column Output].Columns[Anio]" />
                         <inputColumn
-                          refId="Package\Migracion de datos a DW\Migracion de fechas a dimFechas\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Mes]"
+                          refId="Package\Migracion de datos a DW\Migracion de Fechas de tabla Ordenes a dimFechas\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Mes]"
                           cachedDataType="i4"
                           cachedName="Mes"
-                          externalMetadataColumnId="Package\Migracion de datos a DW\Migracion de fechas a dimFechas\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Mes]"
-                          lineageId="Package\Migracion de datos a DW\Migracion de fechas a dimFechas\Derived Column.Outputs[Derived Column Output].Columns[Mes]" />
+                          externalMetadataColumnId="Package\Migracion de datos a DW\Migracion de Fechas de tabla Ordenes a dimFechas\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Mes]"
+                          lineageId="Package\Migracion de datos a DW\Migracion de Fechas de tabla Ordenes a dimFechas\Derived Column.Outputs[Derived Column Output].Columns[Mes]" />
                       </inputColumns>
                       <externalMetadataColumns
                         isUsed="True">
                         <externalMetadataColumn
-                          refId="Package\Migracion de datos a DW\Migracion de fechas a dimFechas\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[idFecha]"
+                          refId="Package\Migracion de datos a DW\Migracion de Fechas de tabla Ordenes a dimFechas\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[idFecha]"
                           dataType="i4"
                           name="idFecha" />
                         <externalMetadataColumn
-                          refId="Package\Migracion de datos a DW\Migracion de fechas a dimFechas\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Anio]"
-                          dataType="dbTimeStamp"
+                          refId="Package\Migracion de datos a DW\Migracion de Fechas de tabla Ordenes a dimFechas\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Anio]"
+                          dataType="i4"
                           name="Anio" />
                         <externalMetadataColumn
-                          refId="Package\Migracion de datos a DW\Migracion de fechas a dimFechas\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Mes]"
-                          dataType="dbTimeStamp"
+                          refId="Package\Migracion de datos a DW\Migracion de Fechas de tabla Ordenes a dimFechas\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Mes]"
+                          dataType="i4"
                           name="Mes" />
                       </externalMetadataColumns>
                     </input>
                   </inputs>
                   <outputs>
                     <output
-                      refId="Package\Migracion de datos a DW\Migracion de fechas a dimFechas\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                      refId="Package\Migracion de datos a DW\Migracion de Fechas de tabla Ordenes a dimFechas\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
                       exclusionGroup="1"
                       isErrorOut="true"
                       name="OLE DB Destination Error Output"
-                      synchronousInputId="Package\Migracion de datos a DW\Migracion de fechas a dimFechas\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                      synchronousInputId="Package\Migracion de datos a DW\Migracion de Fechas de tabla Ordenes a dimFechas\OLE DB Destination.Inputs[OLE DB Destination Input]">
                       <outputColumns>
                         <outputColumn
-                          refId="Package\Migracion de datos a DW\Migracion de fechas a dimFechas\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          refId="Package\Migracion de datos a DW\Migracion de Fechas de tabla Ordenes a dimFechas\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                           dataType="i4"
-                          lineageId="Package\Migracion de datos a DW\Migracion de fechas a dimFechas\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          lineageId="Package\Migracion de datos a DW\Migracion de Fechas de tabla Ordenes a dimFechas\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                           name="ErrorCode"
                           specialFlags="1" />
                         <outputColumn
-                          refId="Package\Migracion de datos a DW\Migracion de fechas a dimFechas\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          refId="Package\Migracion de datos a DW\Migracion de Fechas de tabla Ordenes a dimFechas\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                           dataType="i4"
-                          lineageId="Package\Migracion de datos a DW\Migracion de fechas a dimFechas\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          lineageId="Package\Migracion de datos a DW\Migracion de Fechas de tabla Ordenes a dimFechas\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                           name="ErrorColumn"
                           specialFlags="2" />
                       </outputColumns>
@@ -389,7 +582,7 @@
                   </outputs>
                 </component>
                 <component
-                  refId="Package\Migracion de datos a DW\Migracion de fechas a dimFechas\OLE DB Source"
+                  refId="Package\Migracion de datos a DW\Migracion de Fechas de tabla Ordenes a dimFechas\OLE DB Source"
                   componentClassID="Microsoft.OLEDBSource"
                   contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
                   description="OLE DB Source"
@@ -404,7 +597,7 @@
                     <property
                       dataType="System.String"
                       description="Specifies the name of the database object used to open a rowset."
-                      name="OpenRowset">[dbo].[Ordenes]</property>
+                      name="OpenRowset"></property>
                     <property
                       dataType="System.String"
                       description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -413,15 +606,11 @@
                       dataType="System.String"
                       description="The SQL command to be executed."
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">Select 
-	FechaOrden
-from 
-	Ordenes
-union all 
-Select
-	FechaEnvio
-from 
-	Ordenes;</property>
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT DISTINCT * FROM (SELECT FechaOrden
+FROM Ordenes
+UNION
+SELECT FechaEnvio
+FROM Ordenes) AS FECHAS</property>
                     <property
                       dataType="System.String"
                       description="The variable that contains the SQL command to be executed."
@@ -446,7 +635,7 @@ from
                   </properties>
                   <connections>
                     <connection
-                      refId="Package\Migracion de datos a DW\Migracion de fechas a dimFechas\OLE DB Source.Connections[OleDbConnection]"
+                      refId="Package\Migracion de datos a DW\Migracion de Fechas de tabla Ordenes a dimFechas\OLE DB Source.Connections[OleDbConnection]"
                       connectionManagerID="Package.ConnectionManagers[LocalHost.KentFoods]"
                       connectionManagerRefId="Package.ConnectionManagers[LocalHost.KentFoods]"
                       description="The OLE DB runtime connection used to access the database."
@@ -454,47 +643,47 @@ from
                   </connections>
                   <outputs>
                     <output
-                      refId="Package\Migracion de datos a DW\Migracion de fechas a dimFechas\OLE DB Source.Outputs[OLE DB Source Output]"
+                      refId="Package\Migracion de datos a DW\Migracion de Fechas de tabla Ordenes a dimFechas\OLE DB Source.Outputs[OLE DB Source Output]"
                       name="OLE DB Source Output">
                       <outputColumns>
                         <outputColumn
-                          refId="Package\Migracion de datos a DW\Migracion de fechas a dimFechas\OLE DB Source.Outputs[OLE DB Source Output].Columns[FechaOrden]"
+                          refId="Package\Migracion de datos a DW\Migracion de Fechas de tabla Ordenes a dimFechas\OLE DB Source.Outputs[OLE DB Source Output].Columns[FechaOrden]"
                           dataType="dbTimeStamp"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\Migracion de datos a DW\Migracion de fechas a dimFechas\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[FechaOrden]"
-                          lineageId="Package\Migracion de datos a DW\Migracion de fechas a dimFechas\OLE DB Source.Outputs[OLE DB Source Output].Columns[FechaOrden]"
+                          externalMetadataColumnId="Package\Migracion de datos a DW\Migracion de Fechas de tabla Ordenes a dimFechas\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[FechaOrden]"
+                          lineageId="Package\Migracion de datos a DW\Migracion de Fechas de tabla Ordenes a dimFechas\OLE DB Source.Outputs[OLE DB Source Output].Columns[FechaOrden]"
                           name="FechaOrden"
                           truncationRowDisposition="FailComponent" />
                       </outputColumns>
                       <externalMetadataColumns
                         isUsed="True">
                         <externalMetadataColumn
-                          refId="Package\Migracion de datos a DW\Migracion de fechas a dimFechas\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[FechaOrden]"
+                          refId="Package\Migracion de datos a DW\Migracion de Fechas de tabla Ordenes a dimFechas\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[FechaOrden]"
                           dataType="dbTimeStamp"
                           name="FechaOrden" />
                       </externalMetadataColumns>
                     </output>
                     <output
-                      refId="Package\Migracion de datos a DW\Migracion de fechas a dimFechas\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                      refId="Package\Migracion de datos a DW\Migracion de Fechas de tabla Ordenes a dimFechas\OLE DB Source.Outputs[OLE DB Source Error Output]"
                       isErrorOut="true"
                       name="OLE DB Source Error Output">
                       <outputColumns>
                         <outputColumn
-                          refId="Package\Migracion de datos a DW\Migracion de fechas a dimFechas\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[FechaOrden]"
+                          refId="Package\Migracion de datos a DW\Migracion de Fechas de tabla Ordenes a dimFechas\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[FechaOrden]"
                           dataType="dbTimeStamp"
-                          lineageId="Package\Migracion de datos a DW\Migracion de fechas a dimFechas\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[FechaOrden]"
+                          lineageId="Package\Migracion de datos a DW\Migracion de Fechas de tabla Ordenes a dimFechas\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[FechaOrden]"
                           name="FechaOrden" />
                         <outputColumn
-                          refId="Package\Migracion de datos a DW\Migracion de fechas a dimFechas\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          refId="Package\Migracion de datos a DW\Migracion de Fechas de tabla Ordenes a dimFechas\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                           dataType="i4"
-                          lineageId="Package\Migracion de datos a DW\Migracion de fechas a dimFechas\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          lineageId="Package\Migracion de datos a DW\Migracion de Fechas de tabla Ordenes a dimFechas\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                           name="ErrorCode"
                           specialFlags="1" />
                         <outputColumn
-                          refId="Package\Migracion de datos a DW\Migracion de fechas a dimFechas\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          refId="Package\Migracion de datos a DW\Migracion de Fechas de tabla Ordenes a dimFechas\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
                           dataType="i4"
-                          lineageId="Package\Migracion de datos a DW\Migracion de fechas a dimFechas\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          lineageId="Package\Migracion de datos a DW\Migracion de Fechas de tabla Ordenes a dimFechas\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
                           name="ErrorColumn"
                           specialFlags="2" />
                       </outputColumns>
@@ -505,15 +694,15 @@ from
               </components>
               <paths>
                 <path
-                  refId="Package\Migracion de datos a DW\Migracion de fechas a dimFechas.Paths[Derived Column Output]"
-                  endId="Package\Migracion de datos a DW\Migracion de fechas a dimFechas\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  refId="Package\Migracion de datos a DW\Migracion de Fechas de tabla Ordenes a dimFechas.Paths[Derived Column Output]"
+                  endId="Package\Migracion de datos a DW\Migracion de Fechas de tabla Ordenes a dimFechas\OLE DB Destination.Inputs[OLE DB Destination Input]"
                   name="Derived Column Output"
-                  startId="Package\Migracion de datos a DW\Migracion de fechas a dimFechas\Derived Column.Outputs[Derived Column Output]" />
+                  startId="Package\Migracion de datos a DW\Migracion de Fechas de tabla Ordenes a dimFechas\Derived Column.Outputs[Derived Column Output]" />
                 <path
-                  refId="Package\Migracion de datos a DW\Migracion de fechas a dimFechas.Paths[OLE DB Source Output]"
-                  endId="Package\Migracion de datos a DW\Migracion de fechas a dimFechas\Derived Column.Inputs[Derived Column Input]"
+                  refId="Package\Migracion de datos a DW\Migracion de Fechas de tabla Ordenes a dimFechas.Paths[OLE DB Source Output]"
+                  endId="Package\Migracion de datos a DW\Migracion de Fechas de tabla Ordenes a dimFechas\Derived Column.Inputs[Derived Column Input]"
                   name="OLE DB Source Output"
-                  startId="Package\Migracion de datos a DW\Migracion de fechas a dimFechas\OLE DB Source.Outputs[OLE DB Source Output]" />
+                  startId="Package\Migracion de datos a DW\Migracion de Fechas de tabla Ordenes a dimFechas\OLE DB Source.Outputs[OLE DB Source Output]" />
               </paths>
             </pipeline>
           </DTS:ObjectData>
@@ -2790,11 +2979,19 @@ inner join
         <DTS:PrecedenceConstraint
           DTS:refId="Package\Migracion de datos a DW.PrecedenceConstraints[Restricción 3]"
           DTS:CreationName=""
-          DTS:DTSID="{616A52CA-78D5-49D2-A270-E84BEF9E4C3C}"
+          DTS:DTSID="{A71FB119-70DF-4B7E-B11A-D7F48E25A382}"
           DTS:From="Package\Migracion de datos a DW\Migracion de tablas a dimProveedores"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Restricción 3"
-          DTS:To="Package\Migracion de datos a DW\Migracion de fechas a dimFechas" />
+          DTS:To="Package\Migracion de datos a DW\Migracion de Fechas de tabla Ordenes a dimFechas" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Migracion de datos a DW.PrecedenceConstraints[Restricción 4]"
+          DTS:CreationName=""
+          DTS:DTSID="{D84DF9C4-D8F8-4A2E-A82D-8DB345C9FCD4}"
+          DTS:From="Package\Migracion de datos a DW\Migracion de Fechas de tabla Ordenes a dimFechas"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Restricción 4"
+          DTS:To="Package\Migracion de datos a DW\Data Flow Task" />
       </DTS:PrecedenceConstraints>
     </DTS:Executable>
   </DTS:Executables>
@@ -2819,7 +3016,7 @@ inner join
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="223,42"
           Id="Package\Eliminar y Crear tablas de Kentfoods_DW\Crear tablas de Kentfoods_DW"
@@ -2858,28 +3055,28 @@ inner join
           Id="Package\Eliminar y Crear tablas de Kentfoods_DW"
           TopLeft="19.7023809523809,130.615079365079" />
         <NodeLayout
-          Size="234,42"
-          Id="Package\Migracion de datos a DW\Migracion de fechas a dimFechas"
-          TopLeft="69.8181818181819,359.818181818182" />
+          Size="320,42"
+          Id="Package\Migracion de datos a DW\Migracion de Fechas de tabla Ordenes a dimFechas"
+          TopLeft="27.25,376.5" />
         <NodeLayout
           Size="272,42"
           Id="Package\Migracion de datos a DW\Migracion de tabla Clientes a dimClientes"
-          TopLeft="65.75,104" />
+          TopLeft="57,106.5" />
         <NodeLayout
           Size="329,42"
           Id="Package\Migracion de datos a DW\Migracion de tabla transportistas a dimTransportistas"
-          TopLeft="43.75,17" />
+          TopLeft="35,19.5000000000001" />
         <NodeLayout
           Size="251,42"
           Id="Package\Migracion de datos a DW\Migracion de tablas a dimEmpleados"
-          TopLeft="69,200" />
+          TopLeft="60.25,202.5" />
         <NodeLayout
           Size="258,42"
           Id="Package\Migracion de datos a DW\Migracion de tablas a dimProveedores"
-          TopLeft="64,287" />
+          TopLeft="55.25,289.5" />
         <EdgeLayout
           Id="Package\Migracion de datos a DW.PrecedenceConstraints[Restricción]"
-          TopLeft="205,59">
+          TopLeft="196.25,61.5000000000001">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2901,7 +3098,7 @@ inner join
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Migracion de datos a DW.PrecedenceConstraints[Restricción 1]"
-          TopLeft="198.125,146">
+          TopLeft="189.375,148.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2923,7 +3120,7 @@ inner join
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Migracion de datos a DW.PrecedenceConstraints[Restricción 2]"
-          TopLeft="193.75,242">
+          TopLeft="185,244.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2945,18 +3142,44 @@ inner join
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Migracion de datos a DW.PrecedenceConstraints[Restricción 3]"
-          TopLeft="189.909090909091,329">
+          TopLeft="185.75,331.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,30.8181818181819"
+              EndConnector="0,45"
               Start="0,0"
-              End="0,23.3181818181819">
+              End="0,37.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,23.3181818181819" />
+                    End="0,37.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="151,42"
+          Id="Package\Migracion de datos a DW\Data Flow Task"
+          TopLeft="118,481.5" />
+        <EdgeLayout
+          Id="Package\Migracion de datos a DW.PrecedenceConstraints[Restricción 4]"
+          TopLeft="190.375,418.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,63.0000000000002"
+              Start="0,0"
+              End="0,55.5000000000002">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,55.5000000000002" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2968,8 +3191,8 @@ inner join
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="654,546"
-          Size="654,589"
+          PanelSize="654,612"
+          Size="654,655"
           Id="Package\Migracion de datos a DW"
           TopLeft="411.623015873016,7.70634920634927" />
         <EdgeLayout
@@ -2978,9 +3201,9 @@ inner join
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="60.9206349206351,17.5912698412703"
+              EndConnector="60.9206349206351,50.5912698412703"
               Start="0,0"
-              End="53.4206349206351,17.5912698412703">
+              End="53.4206349206351,50.5912698412703">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
@@ -2991,13 +3214,13 @@ inner join
                     Point2="30.4603174603176,0"
                     Point3="30.4603174603176,4" />
                   <mssgle:LineSegment
-                    End="30.4603174603176,13.5912698412703" />
+                    End="30.4603174603176,46.5912698412703" />
                   <mssgle:CubicBezierSegment
-                    Point1="30.4603174603176,13.5912698412703"
-                    Point2="30.4603174603176,17.5912698412703"
-                    Point3="34.4603174603176,17.5912698412703" />
+                    Point1="30.4603174603176,46.5912698412703"
+                    Point2="30.4603174603176,50.5912698412703"
+                    Point3="34.4603174603176,50.5912698412703" />
                   <mssgle:LineSegment
-                    End="53.4206349206351,17.5912698412703" />
+                    End="53.4206349206351,50.5912698412703" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3010,36 +3233,36 @@ inner join
     </LayoutInfo>
   </Package>
   <TaskHost
-    design-time-name="Package\Migracion de datos a DW\Migracion de fechas a dimFechas">
+    design-time-name="Package\Migracion de datos a DW\Migracion de Fechas de tabla Ordenes a dimFechas">
     <LayoutInfo>
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="150,42"
-          Id="Package\Migracion de datos a DW\Migracion de fechas a dimFechas\OLE DB Source"
-          TopLeft="379,9" />
+          Size="154,42"
+          Id="Package\Migracion de datos a DW\Migracion de Fechas de tabla Ordenes a dimFechas\Derived Column"
+          TopLeft="373,161" />
         <NodeLayout
           Size="171,42"
-          Id="Package\Migracion de datos a DW\Migracion de fechas a dimFechas\OLE DB Destination"
-          TopLeft="368,214" />
+          Id="Package\Migracion de datos a DW\Migracion de Fechas de tabla Ordenes a dimFechas\OLE DB Destination"
+          TopLeft="364,290" />
         <NodeLayout
-          Size="154,42"
-          Id="Package\Migracion de datos a DW\Migracion de fechas a dimFechas\Derived Column"
-          TopLeft="382,121" />
+          Size="150,42"
+          Id="Package\Migracion de datos a DW\Migracion de Fechas de tabla Ordenes a dimFechas\OLE DB Source"
+          TopLeft="373.333333333333,42.1111111111111" />
         <EdgeLayout
-          Id="Package\Migracion de datos a DW\Migracion de fechas a dimFechas.Paths[Derived Column Output]"
-          TopLeft="456.25,163">
+          Id="Package\Migracion de datos a DW\Migracion de Fechas de tabla Ordenes a dimFechas.Paths[Derived Column Output]"
+          TopLeft="449.75,203">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,51"
+              EndConnector="0,87"
               Start="0,0"
-              End="0,43.5">
+              End="0,79.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,43.5" />
+                    End="0,79.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3049,19 +3272,19 @@ inner join
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Migracion de datos a DW\Migracion de fechas a dimFechas.Paths[OLE DB Source Output]"
-          TopLeft="456.5,51">
+          Id="Package\Migracion de datos a DW\Migracion de Fechas de tabla Ordenes a dimFechas.Paths[OLE DB Source Output]"
+          TopLeft="449.166666666667,84.1111111111111">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,70"
+              EndConnector="0,76.8888888888889"
               Start="0,0"
-              End="0,62.5">
+              End="0,69.3888888888889">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,62.5" />
+                    End="0,69.3888888888889" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3074,7 +3297,7 @@ inner join
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Migracion de datos a DW\Migracion de fechas a dimFechas\OLE DB Source">
+    design-time-name="Package\Migracion de datos a DW\Migracion de Fechas de tabla Ordenes a dimFechas\OLE DB Destination">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -3083,6 +3306,14 @@ inner join
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Migracion de datos a DW\Migracion de Fechas de tabla Ordenes a dimFechas\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
@@ -3368,5 +3599,17 @@ inner join
       </Property>
     </Properties>
   </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Migracion de datos a DW\Data Flow Task">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="150,42"
+          Id="Package\Migracion de datos a DW\Data Flow Task\OLE DB Source"
+          TopLeft="250,117" />
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
 </Objects>]]></DTS:DesignTimeProperties>
 </DTS:Executable>
