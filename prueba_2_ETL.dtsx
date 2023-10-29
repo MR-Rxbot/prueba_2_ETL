@@ -11,8 +11,8 @@
   DTS:LocaleID="13322"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="118"
-  DTS:VersionGUID="{B1CE8384-799E-497B-BF8B-2A4F8616432E}">
+  DTS:VersionBuild="137"
+  DTS:VersionGUID="{FDE62FAC-B212-41C5-8826-33AC2030A73C}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -195,7 +195,7 @@
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{CC432029-C4E9-443D-8C26-7FCDBDC23E6C}"
-              SQLTask:SqlStatementSource="create table dimTransportistas(&#xA;&#x9;idTransportista int not null, -- nuestra llave primaria&#xA;&#x9;Transportista nvarchar(50),&#xA;&#x9;Telefono nvarchar(24) not null&#xA;);&#xA;&#xA;create table dimEmpleados(&#xA;&#x9;idEmpleado int not null, -- llave primaria&#xA;&#x9;Apellido nvarchar(30) not null,&#xA;&#x9;Nombre nvarchar(10) not null,&#xA;&#x9;Cargo nvarchar(30),&#xA;&#x9;fechaNacimiento datetime,&#xA;&#x9;fechaContratacion datetime,&#xA;&#x9;Direccion nvarchar (60),&#xA;&#x9;Ciudad nvarchar(15),&#xA;&#x9;Pais nvarchar(15),&#xA;&#x9;Territorio nvarchar(50) not null,&#xA;&#x9;Region nchar(50) not null&#xA;&#x9;&#xA;);&#xA;&#xA;create table dimClientes (&#xA;&#x9;idCliente nchar(5) not null, --llave cliente&#xA;&#x9;Empresa nvarchar(40) not null,&#xA;&#x9;Contacto nvarchar(30),&#xA;&#x9;Cargo nvarchar(30),&#xA;&#x9;Direccion nvarchar(60),&#xA;&#x9;Ciudad nvarchar(15),&#xA;&#x9;codigoPostal nvarchar(10),&#xA;&#x9;Pais nvarchar(15),&#xA;&#x9;Telefono nvarchar(24)&#xA;&#x9;&#xA;);&#xA;&#xA;create table factOrdenes(&#xA;&#x9;idFecha int not null, --llave foranea&#xA;&#x9;idOrden int not null, --llave primaria&#xA;&#x9;idTransportista int not null, --llave foranea&#xA;&#x9;idEmpleado int not null, --llave foranea&#xA;&#x9;idCliente int not null, --llave foranea&#xA;&#x9;idProveedor int not null, --llave foranea&#xA;&#x9;ventasPorMes int not null,&#xA;&#x9;ventasPorTerritorio int not null,&#xA;&#x9;ventasMaxPorCliente int not null,&#xA;&#x9;sumaPorTerritorio int not null,&#xA;&#x9;cantidadVentasPorEmpleado int not null&#xA;&#x9;&#xA;);&#xA;&#xA;create table dimFechas(&#xA;&#x9;idFecha int Identity (1, 1 ) not null, --llave primaria&#xA;&#x9;Anio int,&#xA;&#x9;Mes int&#xA;);&#xA;&#xA;create table dimProveedores(&#xA;&#x9;idProveedor int not null, --llave primaria&#xA;&#x9;Proveedor nvarchar(40) not null,&#xA;&#x9;Contacto nvarchar(40),&#xA;&#x9;Cargo nvarchar(30),&#xA;&#x9;Direccion nvarchar(60),&#xA;&#x9;Ciudad nvarchar(15),&#xA;&#x9;Pais nvarchar(24),&#xA;&#x9;Telefono nvarchar(24),&#xA;&#x9;Producto nvarchar(40) not null,&#xA;&#x9;Categoria nvarchar(15) not null,&#xA;&#x9;Descripcion ntext,&#xA;&#x9;imagen image,&#xA;&#x9;cantidadPorUnidad nvarchar(20),&#xA;&#x9;precioUnitario money,&#xA;&#x9;Cantidad smallint not null,&#xA;&#x9;Descuento real not null&#xA;);&#xA;&#xA;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+              SQLTask:SqlStatementSource="create table dimTransportistas(&#xA;&#x9;idTransportista int not null, -- nuestra llave primaria&#xA;&#x9;Transportista nvarchar(50),&#xA;&#x9;Telefono nvarchar(24) not null&#xA;&#x9;CONSTRAINT PK_dimTransportistas_idTransportista PRIMARY KEY CLUSTERED(idTransportista)&#xA;);&#xA;&#xA;create table dimEmpleados(&#xA;&#x9;idEmpleado int not null, -- llave primaria&#xA;&#x9;Apellido nvarchar(30) not null,&#xA;&#x9;Nombre nvarchar(10) not null,&#xA;&#x9;Cargo nvarchar(30),&#xA;&#x9;fechaNacimiento datetime,&#xA;&#x9;fechaContratacion datetime,&#xA;&#x9;Direccion nvarchar (60),&#xA;&#x9;Ciudad nvarchar(15),&#xA;&#x9;Pais nvarchar(15),&#xA;&#x9;Territorio nvarchar(150) not null,&#xA;&#x9;Region nchar(50) not null&#xA;&#x9;CONSTRAINT PK_dimEmpleados_idEmpleado PRIMARY KEY CLUSTERED(idEmpleado)&#xA;);&#xA;&#xA;create table dimClientes (&#xA;&#x9;idCliente nchar(5) not null, --llave cliente&#xA;&#x9;Empresa nvarchar(40) not null,&#xA;&#x9;Contacto nvarchar(30),&#xA;&#x9;Cargo nvarchar(30),&#xA;&#x9;Direccion nvarchar(60),&#xA;&#x9;Ciudad nvarchar(15),&#xA;&#x9;codigoPostal nvarchar(10),&#xA;&#x9;Pais nvarchar(15),&#xA;&#x9;Telefono nvarchar(24)&#xA;&#x9;CONSTRAINT PK_dimClientes_idCliente PRIMARY KEY CLUSTERED (idCliente)&#xA;);&#xA;&#xA;create table factOrdenes(&#xA;&#x9;idFecha int not null, --llave foranea&#xA;&#x9;idOrden int not null, --llave primaria&#xA;&#x9;idTransportista int not null, --llave foranea&#xA;&#x9;idEmpleado int not null, --llave foranea&#xA;&#x9;idCliente nchar(5) not null, --llave foranea&#xA;&#x9;ProveedorID  int not null, --llave foranea&#xA;&#x9;ventasPorMes int not null,&#xA;&#x9;ventasPorTerritorio int not null,&#xA;&#x9;ventasMaxPorCliente int not null,&#xA;&#x9;sumaPorTerritorio int not null,&#xA;&#x9;cantidadVentasPorEmpleado int not null&#xA;&#x9;CONSTRAINT PK_factOrdenes_idOrden PRIMARY KEY CLUSTERED (idOrden)&#xA;&#x9;&#xA;);&#xA;&#xA;create table dimFechas(&#xA;&#x9;idFecha int Identity (1, 1 ) not null, --llave primaria&#xA;&#x9;Anio int,&#xA;&#x9;Mes int&#xA;&#x9;CONSTRAINT PK_dimFechas_idFecha PRIMARY KEY CLUSTERED (idFecha)&#xA;);&#xA;&#xA;create table dimProveedores(&#xA;&#x9;ProveedorID int identity(1, 1),&#xA;&#x9;idProveedor int null,&#xA;&#x9;Proveedor nvarchar(40) not null,&#xA;&#x9;Contacto nvarchar(40),&#xA;&#x9;Cargo nvarchar(30),&#xA;&#x9;Direccion nvarchar(60),&#xA;&#x9;Ciudad nvarchar(15),&#xA;&#x9;Pais nvarchar(24),&#xA;&#x9;Telefono nvarchar(24),&#xA;&#x9;Producto nvarchar(40) not null,&#xA;&#x9;Categoria nvarchar(15) not null,&#xA;&#x9;Descripcion ntext,&#xA;&#x9;imagen image,&#xA;&#x9;cantidadPorUnidad nvarchar(20),&#xA;&#x9;precioUnitario money,&#xA;&#x9;Cantidad smallint not null,&#xA;&#x9;Descuento real not null&#xA;&#x9;CONSTRAINT PK_dimProveedores_ProveedorID PRIMARY KEY CLUSTERED (ProveedorID)&#xA;);&#xA;&#xA;&#xA;ALTER TABLE factOrdenes&#xA;ADD CONSTRAINT FK_factOrdenes_idFecha&#xA;FOREIGN KEY (idFecha)&#xA;REFERENCES dimFechas(idFecha);&#xA;&#xA;ALTER TABLE factOrdenes&#xA;ADD CONSTRAINT FK_factOrdenes_idTransportista&#xA;FOREIGN KEY (idTransportista)&#xA;REFERENCES dimTransportistas(idTransportista);&#xA;&#xA;ALTER TABLE factOrdenes&#xA;ADD CONSTRAINT FK_factOrdenes_idEmpleado&#xA;FOREIGN KEY (idEmpleado)&#xA;REFERENCES dimEmpleados(idEmpleado);&#xA;&#xA;ALTER TABLE factOrdenes&#xA;ADD CONSTRAINT FK_factOrdenes_idCliente&#xA;FOREIGN KEY (idCliente)&#xA;REFERENCES dimClientes(idCliente);&#xA;&#xA;ALTER TABLE factOrdenes&#xA;ADD CONSTRAINT FK_factOrdenes_ProveedorID&#xA;FOREIGN KEY (ProveedorID)&#xA;REFERENCES dimProveedores(ProveedorID);&#xA;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
@@ -212,7 +212,7 @@
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{CC432029-C4E9-443D-8C26-7FCDBDC23E6C}"
-              SQLTask:SqlStatementSource="drop table dimClientes;&#xA;drop table dimEmpleados;&#xA;drop table dimFechas;&#xA;drop table dimProveedores;&#xA;drop table dimTransportistas;&#xA;drop table factOrdenes;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+              SQLTask:SqlStatementSource="ALTER TABLE factOrdenes&#xA;DROP CONSTRAINT FK_factOrdenes_idFecha;&#xA;&#xA;ALTER TABLE factOrdenes&#xA;DROP CONSTRAINT FK_factOrdenes_idTransportista;&#xA;&#xA;ALTER TABLE factOrdenes&#xA;DROP CONSTRAINT FK_factOrdenes_idEmpleado;&#xA;&#xA;ALTER TABLE factOrdenes&#xA;DROP CONSTRAINT FK_factOrdenes_idCliente;&#xA;&#xA;ALTER TABLE factOrdenes&#xA;DROP CONSTRAINT FK_factOrdenes_ProveedorID;&#xA;&#xA;ALTER TABLE dimTransportistas&#xA;DROP CONSTRAINT PK_dimTransportistas_idTransportista;&#xA;&#xA;ALTER TABLE dimEmpleados&#xA;DROP CONSTRAINT PK_dimEmpleados_idEmpleado;&#xA;&#xA;ALTER TABLE dimClientes&#xA;DROP CONSTRAINT PK_dimClientes_idCliente;&#xA;&#xA;ALTER TABLE dimFechas&#xA;DROP CONSTRAINT PK_dimFechas_idFecha;&#xA;&#xA;ALTER TABLE dimProveedores&#xA;DROP CONSTRAINT PK_dimProveedores_ProveedorID;&#xA;&#xA;&#xA;drop table dimClientes;&#xA;drop table dimEmpleados;&#xA;drop table dimFechas;&#xA;drop table dimProveedores;&#xA;drop table dimTransportistas;&#xA;drop table factOrdenes;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
           </DTS:ObjectData>
         </DTS:Executable>
       </DTS:Executables>
@@ -237,107 +237,6 @@
       DTS:ObjectName="Migracion de datos a DW">
       <DTS:Variables />
       <DTS:Executables>
-        <DTS:Executable
-          DTS:refId="Package\Migracion de datos a DW\Data Flow Task"
-          DTS:CreationName="Microsoft.Pipeline"
-          DTS:Description="Data Flow Task"
-          DTS:DTSID="{4B72CD8B-3207-4B3B-B127-DA6895CEBA46}"
-          DTS:ExecutableType="Microsoft.Pipeline"
-          DTS:LocaleID="-1"
-          DTS:ObjectName="Data Flow Task"
-          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
-          <DTS:Variables />
-          <DTS:ObjectData>
-            <pipeline
-              version="1">
-              <components>
-                <component
-                  refId="Package\Migracion de datos a DW\Data Flow Task\OLE DB Source"
-                  componentClassID="Microsoft.OLEDBSource"
-                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
-                  description="OLE DB Source"
-                  name="OLE DB Source"
-                  usesDispositions="true"
-                  version="7">
-                  <properties>
-                    <property
-                      dataType="System.Int32"
-                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
-                      name="CommandTimeout">0</property>
-                    <property
-                      dataType="System.String"
-                      description="Specifies the name of the database object used to open a rowset."
-                      name="OpenRowset"></property>
-                    <property
-                      dataType="System.String"
-                      description="Specifies the variable that contains the name of the database object used to open a rowset."
-                      name="OpenRowsetVariable"></property>
-                    <property
-                      dataType="System.String"
-                      description="The SQL command to be executed."
-                      name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
-                    <property
-                      dataType="System.String"
-                      description="The variable that contains the SQL command to be executed."
-                      name="SqlCommandVariable"></property>
-                    <property
-                      dataType="System.Int32"
-                      description="Specifies the column code page to use when code page information is unavailable from the data source."
-                      name="DefaultCodePage">1252</property>
-                    <property
-                      dataType="System.Boolean"
-                      description="Forces the use of the DefaultCodePage property value when describing character data."
-                      name="AlwaysUseDefaultCodePage">false</property>
-                    <property
-                      dataType="System.Int32"
-                      description="Specifies the mode used to access the database."
-                      name="AccessMode"
-                      typeConverter="AccessMode">0</property>
-                    <property
-                      dataType="System.String"
-                      description="The mappings between the parameters in the SQL command and variables."
-                      name="ParameterMapping"></property>
-                  </properties>
-                  <connections>
-                    <connection
-                      refId="Package\Migracion de datos a DW\Data Flow Task\OLE DB Source.Connections[OleDbConnection]"
-                      description="The OLE DB runtime connection used to access the database."
-                      name="OleDbConnection" />
-                  </connections>
-                  <outputs>
-                    <output
-                      refId="Package\Migracion de datos a DW\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output]"
-                      name="OLE DB Source Output">
-                      <externalMetadataColumns
-                        isUsed="True" />
-                    </output>
-                    <output
-                      refId="Package\Migracion de datos a DW\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output]"
-                      isErrorOut="true"
-                      name="OLE DB Source Error Output">
-                      <outputColumns>
-                        <outputColumn
-                          refId="Package\Migracion de datos a DW\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
-                          dataType="i4"
-                          lineageId="Package\Migracion de datos a DW\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
-                          name="ErrorCode"
-                          specialFlags="1" />
-                        <outputColumn
-                          refId="Package\Migracion de datos a DW\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
-                          dataType="i4"
-                          lineageId="Package\Migracion de datos a DW\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
-                          name="ErrorColumn"
-                          specialFlags="2" />
-                      </outputColumns>
-                      <externalMetadataColumns />
-                    </output>
-                  </outputs>
-                </component>
-              </components>
-            </pipeline>
-          </DTS:ObjectData>
-        </DTS:Executable>
         <DTS:Executable
           DTS:refId="Package\Migracion de datos a DW\Migracion de Fechas de tabla Ordenes a dimFechas"
           DTS:CreationName="Microsoft.Pipeline"
@@ -1815,7 +1714,7 @@ FROM Ordenes) AS FECHAS</property>
                         <externalMetadataColumn
                           refId="Package\Migracion de datos a DW\Migracion de tablas a dimEmpleados\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Territorio]"
                           dataType="wstr"
-                          length="20"
+                          length="150"
                           name="Territorio" />
                         <externalMetadataColumn
                           refId="Package\Migracion de datos a DW\Migracion de tablas a dimEmpleados\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Region]"
@@ -1875,23 +1774,23 @@ FROM Ordenes) AS FECHAS</property>
                       dataType="System.String"
                       description="The SQL command to be executed."
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select
-	emp.EmpleadoID,
-	emp.Apellido,
-	emp.Nombre,
-	emp.Cargo,
-	emp.FechaNacimiento,
-	emp.FechaContratacion,
-	emp.Direccion,
-	emp.Ciudad,
-	emp.Pais,
-	terr.Territorio,
-	reg.Region
-from
-	Empleados emp
-inner join TerritoriosEmpleados temp on emp.EmpleadoID = temp.EmpleadoID
-inner join Territorios terr on temp.TerritorioID = terr.TerritorioID
-inner join Regiones reg on terr.RegionID = reg.RegionID;</property>
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT
+    emp.EmpleadoID,
+    MAX(emp.Apellido) AS Apellido, -- Ejemplo de agregación
+    MAX(emp.Nombre) AS Nombre,     -- Ejemplo de agregación
+    MAX(emp.Cargo) AS Cargo,       -- Ejemplo de agregación
+    MAX(emp.FechaNacimiento) AS FechaNacimiento, -- Ejemplo de agregación
+    MAX(emp.FechaContratacion) AS FechaContratacion, -- Ejemplo de agregación
+    MAX(emp.Direccion) AS Direccion, -- Ejemplo de agregación
+    MAX(emp.Ciudad) AS Ciudad,       -- Ejemplo de agregación
+    MAX(emp.Pais) AS Pais,           -- Ejemplo de agregación
+    MAX(terr.Territorio) AS Territorio, -- Ejemplo de agregación
+    MAX(reg.Region) AS Region        -- Ejemplo de agregación
+FROM Empleados emp
+INNER JOIN TerritoriosEmpleados temp ON emp.EmpleadoID = temp.EmpleadoID
+INNER JOIN Territorios terr ON temp.TerritorioID = terr.TerritorioID
+INNER JOIN Regiones reg ON terr.RegionID = reg.RegionID
+GROUP BY emp.EmpleadoID;</property>
                     <property
                       dataType="System.String"
                       description="The variable that contains the SQL command to be executed."
@@ -2461,6 +2360,10 @@ inner join Regiones reg on terr.RegionID = reg.RegionID;</property>
                           refId="Package\Migracion de datos a DW\Migracion de tablas a dimProveedores\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Descuento]"
                           dataType="r4"
                           name="Descuento" />
+                        <externalMetadataColumn
+                          refId="Package\Migracion de datos a DW\Migracion de tablas a dimProveedores\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ProveedorID]"
+                          dataType="i4"
+                          name="ProveedorID" />
                       </externalMetadataColumns>
                     </input>
                   </inputs>
@@ -2984,14 +2887,6 @@ inner join
           DTS:LogicalAnd="True"
           DTS:ObjectName="Restricción 3"
           DTS:To="Package\Migracion de datos a DW\Migracion de Fechas de tabla Ordenes a dimFechas" />
-        <DTS:PrecedenceConstraint
-          DTS:refId="Package\Migracion de datos a DW.PrecedenceConstraints[Restricción 4]"
-          DTS:CreationName=""
-          DTS:DTSID="{D84DF9C4-D8F8-4A2E-A82D-8DB345C9FCD4}"
-          DTS:From="Package\Migracion de datos a DW\Migracion de Fechas de tabla Ordenes a dimFechas"
-          DTS:LogicalAnd="True"
-          DTS:ObjectName="Restricción 4"
-          DTS:To="Package\Migracion de datos a DW\Data Flow Task" />
       </DTS:PrecedenceConstraints>
     </DTS:Executable>
   </DTS:Executables>
@@ -3016,7 +2911,7 @@ inner join
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="223,42"
           Id="Package\Eliminar y Crear tablas de Kentfoods_DW\Crear tablas de Kentfoods_DW"
@@ -3057,7 +2952,7 @@ inner join
         <NodeLayout
           Size="320,42"
           Id="Package\Migracion de datos a DW\Migracion de Fechas de tabla Ordenes a dimFechas"
-          TopLeft="27.25,376.5" />
+          TopLeft="24.3928571428571,375.071428571429" />
         <NodeLayout
           Size="272,42"
           Id="Package\Migracion de datos a DW\Migracion de tabla Clientes a dimClientes"
@@ -3142,44 +3037,18 @@ inner join
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Migracion de datos a DW.PrecedenceConstraints[Restricción 3]"
-          TopLeft="185.75,331.5">
+          TopLeft="184.321428571429,331.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,45"
+              EndConnector="0,43.5714285714286"
               Start="0,0"
-              End="0,37.5">
+              End="0,36.0714285714286">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,37.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="151,42"
-          Id="Package\Migracion de datos a DW\Data Flow Task"
-          TopLeft="118,481.5" />
-        <EdgeLayout
-          Id="Package\Migracion de datos a DW.PrecedenceConstraints[Restricción 4]"
-          TopLeft="190.375,418.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,63.0000000000002"
-              Start="0,0"
-              End="0,55.5000000000002">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,55.5000000000002" />
+                    End="0,36.0714285714286" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3236,7 +3105,7 @@ inner join
     design-time-name="Package\Migracion de datos a DW\Migracion de Fechas de tabla Ordenes a dimFechas">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="154,42"
           Id="Package\Migracion de datos a DW\Migracion de Fechas de tabla Ordenes a dimFechas\Derived Column"
@@ -3268,7 +3137,9 @@ inner join
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -3290,7 +3161,9 @@ inner join
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -3542,7 +3415,7 @@ inner join
     design-time-name="Package\Migracion de datos a DW\Migracion de tablas a dimProveedores">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="150,42"
           Id="Package\Migracion de datos a DW\Migracion de tablas a dimProveedores\OLE DB Source"
@@ -3570,9 +3443,7 @@ inner join
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -3599,17 +3470,5 @@ inner join
       </Property>
     </Properties>
   </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\Migracion de datos a DW\Data Flow Task">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
-        <NodeLayout
-          Size="150,42"
-          Id="Package\Migracion de datos a DW\Data Flow Task\OLE DB Source"
-          TopLeft="250,117" />
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
 </Objects>]]></DTS:DesignTimeProperties>
 </DTS:Executable>
